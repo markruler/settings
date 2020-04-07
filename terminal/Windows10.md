@@ -2,9 +2,9 @@
 
 > 튜토리얼 강의들을 보면 터미널에 화살표가 들어가서 라인 구분하기가 좋아보이길래 (멋잇어 보이길래) 찾아봤다.
 
-![terminal](./image/terminal.png)
+![terminal](../image/terminal.png)
 
-![vs code](./image/vscode.png)
+![vs code](../image/vscode.png)
 
 - [```Windows Terminal```](#Windows-Terminal)
 - [```Chocolatey```](#Chocolatey)

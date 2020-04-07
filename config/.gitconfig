@@ -1,0 +1,15 @@
+# global: ~/.gitconfig
+# local: .git/config
+[core]
+  repositoryformatversion = 0
+  filemode = true
+  bare = false
+  logallrefupdates = true
+  ignorecase = true
+  precomposeunicode = true
+[user]
+  name = "changsu.im"
+  email = "changsu.im@wizontech.com"
+[remote "hub"]
+  url = https://github.com/markruler/repository-name.git
+  fetch = +refs/heads/*:refs/remotes/hub/*
