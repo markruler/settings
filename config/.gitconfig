@@ -7,6 +7,8 @@
   logallrefupdates = true
   ignorecase = true
   precomposeunicode = true
+
+;local-user
 [user]
   name = "changsu.im"
   email = "changsu.im@wizontech.com"
