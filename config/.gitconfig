@@ -10,8 +10,8 @@
 
 ;local-user
 [user]
-  name = "changsu.im"
-  email = "changsu.im@wizontech.com"
+  name = "markruler"
+  email = "csu0414@gmail.com"
 [remote "hub"]
   url = https://github.com/markruler/repository-name.git
   fetch = +refs/heads/*:refs/remotes/hub/*
