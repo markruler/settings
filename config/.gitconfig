@@ -1,16 +1,14 @@
-# global: ~/.gitconfig
-# local: .git/config
+# https://gist.github.com/tdd/470582
+# https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
+# man git-config
 [user]
 	name = cxsu
 	email = imcxsu@gmail.com
 [core]
-	# editor = vim
-	# 
-	# VSCode
-  editor = code --wait
-	# 
-	hooksPath = ~/.githooks
-	pager = cat
+	hooksPath = ./.githooks # ~/.githooks
+  # editor = code --wait # vim, emacs
+  editor = vim
+	pager = less # cat, more
 	whitespace = -trailing-space
 	repositoryformatversion = 0
 	filemode = true
