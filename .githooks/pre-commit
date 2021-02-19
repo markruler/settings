@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# chmod +x pre-commit
+
+echo "Update pre-commit file"
+
+# golang
+# go fmt ./... -v

@@ -1,0 +1,148 @@
+{
+  // vscode
+  "explorer.compactFolders": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.showTabs": true,
+  "workbench.colorCustomizations": {
+    "minimap.background": "#00000035"
+  },
+  // "workbench.colorTheme": "Electron",
+  // "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "material-icon-theme",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnSaveMode": "modifications",
+  "editor.tabSize": 2,
+  "editor.useTabStops": true,
+  "editor.fontSize": 14,
+  "editor.trimAutoWhitespace": true,
+  "editor.suggestSelection": "first",
+  "editor.minimap.size": "fill",
+  "files.insertFinalNewline": false,
+  "files.trimFinalNewlines": true,
+  "extensions.ignoreRecommendations": false,
+  "material-icon-theme.folders.color": "#90a4ae",
+  // intelligent
+  "tabnine.experimentalAutoImports": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  // react
+  "files.associations": {
+    "*.yml": "yaml",
+    "*.js": "javascriptreact",
+    "*.html": "html"
+  },
+  "files.exclude": {
+    "**/.git": false,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  // emmet
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  // web frontend
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css"
+      // "savePath": "/dist/css/" // 지정안하면 현재 폴더
+    }
+  ],
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  // javascript
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // terminal
+  // "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  // "terminal.integrated.fontFamily": "Delugia Nerd Font",
+  // "terminal.integrated.fontFamily": "monospace",
+  // "terminal.integrated.fontFamily": "d2coding",
+  "terminal.integrated.fontSize": 14,
+  // markup
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.useLanguageServer": true,
+  "go.testOnSave": true,
+  "go.testFlags": ["-v"],
+  "go.autocompleteUnimportedPackages": true,
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    // Optional: Disable snippets, as they conflict with completion ranking.
+    "editor.snippetSuggestions": "inline"
+  },
+  "[go.mod]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.languageServerExperimentalFeatures": {
+    "diagnostics": true // for diagnostics as you type
+  },
+  "go.formatTool": "goimports",
+  // java
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+  },
+  "java.trace.server":"verbose",
+  "java.semanticHighlighting.enabled": true,
+  "java.project.importOnFirstTimeStartup": "automatic",
+  "java.refactor.renameFromFileExplorer": "preview",
+  // "java.home": "C:\\Program Files\\Java\\jdk1.8.0_231",
+  // lombok
+  // "java.jdt.ls.vmargs": "-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -javaagent:\"/Users/changsuim/.vscode/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
+  // "java.configuration.checkProjectSettingsExclusions": false,
+  // docker
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  // kubernetes
+  "vs-kubernetes": {
+    "vs-kubernetes.minikube-path.mac": "/Users/changsuim/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+    "vs-kubernetes.helm-path.mac": "/Users/changsuim/.vs-kubernetes/tools/helm/darwin-amd64/helm"
+  },
+  // python
+  "python.showStartPage": false,
+  "python.languageServer": "Microsoft",
+  "cmake.configureOnOpen": false,
+  // gitlens
+  "gitlens.currentLine.enabled": true,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.codeLens.authors.enabled": false,
+  // "[cpp]": {
+  //   "editor.defaultFormatter": "ms-vscode.cpptools"
+  // },
+  "editor.multiCursorModifier": "ctrlCmd",
+  "json.maxItemsComputed": 10000
+}

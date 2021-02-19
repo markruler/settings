@@ -1,17 +1,59 @@
 # global: ~/.gitconfig
 # local: .git/config
-[core]
-  repositoryformatversion = 0
-  filemode = true
-  bare = false
-  logallrefupdates = true
-  ignorecase = true
-  precomposeunicode = true
-
-;local-user
 [user]
-  name = "markruler"
-  email = "csu0414@gmail.com"
-[remote "hub"]
-  url = https://github.com/markruler/repository-name.git
-  fetch = +refs/heads/*:refs/remotes/hub/*
+	name = cxsu
+	email = imcxsu@gmail.com
+[core]
+	# editor = vim
+	# 
+	# VSCode
+  editor = code --wait
+	# 
+	hooksPath = ~/.githooks
+	pager = cat
+	whitespace = -trailing-space
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[color]
+  ui = auto
+[status]
+  submoduleSummary = true
+[diff]
+  # Use better, descriptive initials (c, i, w) instead of a/b.
+  mnemonicPrefix = true
+  # Show renames/moves as such
+  renames = true
+  # When using --word-diff, assume --word-diff-regex=.
+  wordRegex = .
+  # Display submodule-related information (commit listings)
+  submodule = log
+  # Use VSCode as default diff tool when running `git diff-tool`
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[remote "origin"]
+	url = https://cxsu@github.com/cxsu/settings.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[tag]
+  # Sort tags as version numbers whenever applicable, so 1.10.2 is AFTER 1.2.0.
+  sort = version:refname
+[alias]
+	alias = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+	st = status
+	logg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset' # --oneline --all
+	cm = commit
+  co = checkout
+	df = diff
+	dfs = diff --staged
+	# Useful when you have to update your last commit
+  # with staged files without editing the commit message.
+	oops = commit --amend --no-edit
+  # Edit last commit message
+	reword = commit --amend

@@ -1,0 +1,25 @@
+// spring-boot dashboard (microsoft) extenstion
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "PetClinicApplication<spring-petclinic>-Spring Boot Dashboard Ext",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "org.springframework.samples.petclinic.PetClinicApplication",
+      "projectName": "spring-petclinic",
+      // 1. Via a commandline argument of the form --spring.profiles.active=profile1,profile2.
+      // 2. Via a java system property (so a VM argument of the form -Dspring.profiles.active=profile1,profile2.
+      // 3. Via the application.properties or application.yml file on the project's classpath
+      //    (typically it will be placed in src/main/resources' directory for the typical boot project).
+      "args": [
+        "--spring.profiles.active=profile1,profile2",
+      ],
+      "vmArgs": [
+        "-Dspring.config.location=file:application.yml",
+      ]
+    }
+  ]
+}
