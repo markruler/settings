@@ -2,12 +2,14 @@
 # https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
 # man git-config
 [user]
-	name = cxsu
+	name = Changsu Im
 	email = imcxsu@gmail.com
 [core]
 	hooksPath = ./.githooks # ~/.githooks
-  # editor = code --wait # vim, emacs
-  editor = vim
+  editor = code --wait
+  # editor = vim
+  # editor = gedit
+	# editor = emacs
 	pager = less # cat, more
 	whitespace = -trailing-space
 	repositoryformatversion = 0
@@ -34,7 +36,7 @@
 [difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
 [remote "origin"]
-	url = https://cxsu@github.com/cxsu/settings.git
+	url = https://markruler@github.com/markruler/settings.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "main"]
 	remote = origin
