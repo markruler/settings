@@ -1,18 +1,32 @@
+# VIM 설정
+
+## [추천 플러그인](https://vimawesome.com/)
+
+- `vim-airline`
+- `vim-fugitive`
+- `NERDTree`
+- `vim-gitgutter`
+- `vim-go`
+
+## 플러그인 설치
+
+```vim
+"`$HOME/.vimrc`
 "call plug#begin('~/.vim/plugged')
 call plug#begin()
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
+```
 
-"vim PlugInstall
+```bash
+# on shell
+vim PlugInstall
+```
 
-"https://vimawesome.com/
-"vim-airline
-"vim-fugitive
-"NERDTree
-"vim-gitgutter
-"vim-go
+## `.vimrc` 설정
 
+```vim
 " https://tools.ietf.org/html/rfc2119
 " MUST
 filetype plugin indent on
@@ -31,7 +45,7 @@ set bs=indent,eol,start "backspace, Each item allows a way to backspace over som
 set bg=dark "background, When set to "dark", Vim will try to use colors that look good on a dark background.
 set sw=2 "shiftwidth, Number of spaces to use for each step of (auto)indent.
 set ts=2 "tabstop, Number of spaces that a <Tab> in the file counts for.
-set nu "number, Print the line number in front of each line.                                                                                                                
+set nu "number, Print the line number in front of each line.
 set cul "cursorline, Highlight the screen line of the cursor with CursorLine |hl-CursorLine|.
 set ai "autoindent
 set et "expandtab, Use the appropriate number of spaces to insert a <Tab>.
@@ -55,3 +69,4 @@ set hls "hlsearch, highlight matches with the last used search pattern.
 set is "incsearch, While typing a search command, show where the pattern, as it was typed so far, matches.
 set ic "ignorecase, Ignore case in search patterns.
 set nows "nowrapscan, do not wrap around
+```
