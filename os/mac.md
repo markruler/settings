@@ -8,8 +8,9 @@
 
 ## [iTerm2](https://iterm2.com/)
 
-- Font: [NanumGothicCoding](https://github.com/naver/nanumfont), Regular, 14
-- Preferences > Profiles > Keys > Left Option key : `Esc+`
+- Preferences > Profiles > Text > Font: [NanumGothicCoding](https://github.com/naver/nanumfont), Regular, 14
+- Preferences > Profiles > Keys > Left Option key: `Esc+`
+- Preferences > Profiles > Session > Status bar enabled > Configure Status Bar: CPU Utilization, Memory Utilization, Network Throughput, Job Name, Current Directory, git state
 
 ## zsh
 
