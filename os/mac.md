@@ -88,7 +88,14 @@ sdk install gradle 6.9
 
 ## etc.
 
-- [Visual Studio Code](https://code.visualstudio.com/)
 - [IntelliJ IDEA](https://www.jetbrains.com/ko-kr/idea/) - Ultimate
 - [DBeaver](https://dbeaver.io/) - Community Edition
 - [Docker Desktop for Mac](https://docs.docker.com/docker-for-mac/install/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+  - `.vscode/settings.json`
+
+```json
+"files.exclude": {
+    "**/.git": false
+}
+```
