@@ -1,9 +1,10 @@
-# 윈도우 데스크탑 세팅
+# Windows 10 Desktop
 
-- [윈도우 데스크탑 세팅](#윈도우-데스크탑-세팅)
+- [Windows 10 Desktop](#windows-10-desktop)
   - [한영전환키 변경](#한영전환키-변경)
   - [Hyper-V 활성화](#hyper-v-활성화)
   - [WSL2 (Windows Subsystem for Linux 2) 활성화](#wsl2-windows-subsystem-for-linux-2-활성화)
+    - [Docker for Windows와 같이 사용할 경우 주의할 점](#docker-for-windows와-같이-사용할-경우-주의할-점)
     - [Locale 설정](#locale-설정)
   - [패키지 매니저](#패키지-매니저)
     - [scoop](#scoop)
@@ -23,12 +24,16 @@
 
 ## 한영전환키 변경
 
-`언어 설정` - `기본 설정 언어` - `한국어` - `옵션` - `하드웨어 키보드 레이아웃` - `한글 키보드(101키) 종류3`
+> 언어 설정 > 기본 설정 언어 > 한국어 > 옵션 > 하드웨어 키보드 레이아웃
 
-> - 한영전환키: `shift` + `space`
-> - 한자전환키: `ctrl` + `space`
+| layout                   | 한/영 전환        | 한자 전환        | 비고                                                     |
+| ------------------------ | ----------------- | ---------------- | -------------------------------------------------------- |
+| 한글 키보드(103/106키)   | `한/영`           | `한자`           | 한국에서만 쓰임                                          |
+| 한글 키보드(101키) 종류1 | 오른쪽 `Alt`      | 오른쪽 `Ctrl`    | ✅                                                       |
+| 한글 키보드(101키) 종류2 | 오른쪽 `Ctrl`     | 오른쪽 `Alt`     | 익숙하지 않음                                            |
+| 한글 키보드(101키) 종류3 | `Shift` + `Space` | `Ctrl` + `Space` | IDE에서 자동 완성 기능이 주로 `Ctrl` + `Space` 라서 충돌 |
 
-![windows-keyboard-layout.png](../images/windows-keyboard-layout.png)
+![windows10-keyboard-layout.png](../images/windows10-keyboard-layout.png)
 
 ## Hyper-V 활성화
 
@@ -42,7 +47,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 - [Microsoft manual](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 - [44bits 참고](https://www.44bits.io/ko/post/wsl2-install-and-basic-usage)
 
-Windows PowerShell을 관리자 권한으로 열어서 (`shift` + `ctrl` + `mouse left`) 아래 명령어를 차례대로 실행시킵니다.
+Windows PowerShell을 관리자 권한으로 열어서 (`Shift` + `Ctrl` + `Mouse Left`) 아래 명령어를 차례대로 실행시킵니다.
 
 ```powershell
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -93,7 +98,14 @@ apt-get update
 apt-get install -y neofetch
 ```
 
-![wsl2-neofetch.png](../images/wsl2-neofetch.png)
+![windows10-wsl2-neofetch.png](../images/windows10-wsl2-neofetch.png)
+
+### Docker for Windows와 같이 사용할 경우 주의할 점
+
+Docker for Windows를 설치한 후 `Settings > General`에서 `Use the WSL 2 based engine`이
+활성화(default) 되어있다면 네트워크 어댑터가 충돌해서(?)  WSL에 접속하면 인터넷 연결이 되지 않는다.
+Docker for Windows의 `Settings > Resources > WSL Integration`에서
+`Enable integration with my default WSL distro`을 활성화해준다.
 
 ### Locale 설정
 
@@ -138,7 +150,7 @@ scoop install git
 neofetch
 ```
 
-![neofetch-windows.png](../images/neofetch-windows.png)
+![windows10-neofetch.png](../images/windows10-neofetch.png)
 
 ## [sdkman](https://sdkman.io/)
 
@@ -206,12 +218,12 @@ Get-Command node
 
 - [How to make a pretty prompt in Windows Terminal with Powerline, Nerd Fonts, Cascadia Code, WSL, and oh-my-posh](https://www.hanselman.com/blog/HowToMakeAPrettyPromptInWindowsTerminalWithPowerlineNerdFontsCascadiaCodeWSLAndOhmyposh.aspx)
 
-![terminal](../images/terminal.png)
+![windows10-terminal](../images/windows10-terminal.png)
 
 > - To split a pane vertically, `Alt` + `Shift` + `=`
 > - To split a pane horizontally, `Alt` + `Shift` + `-`
 
-![vs code](../images/vscode.png)
+![windows10-terminal-split](../images/windows10-terminal-split.png)
 
 - `profiles.json` 설정
 - run as a Administrator: `Ctrl` + `Shift` + `Mouse Left`
