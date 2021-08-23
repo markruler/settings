@@ -72,6 +72,9 @@
 | Auto Indent Line                                 | 자동 들여쓰기 (전체 선택 후 실행)                                           | `Ctrl` + `Alt` + `I`                      | `Control` + `Option` + `I`             |
 | Auto Completion                                  | 자동 완성                                                                   | `Ctrl` + `Space`                          | `Control` + `Space`                    |
 | Join Lines                                       | 현재 라인 + 다음 라인 합체!                                                 | `Ctrl` + `Shift` + `J`                    | `Control` + `Shift` + `J`              |
+| Duplicate Line or Selection                      | 현재 라인 / 블록 영역 복제                                                  | `Ctrl` + `D`                              | `Command` + `D`                        |
+| Delete Line                                      | 현재 라인 삭제                                                              | `Ctrl` + `Y`                              | `Command` + `Delete`                   |
+| Move Statement Up/Down                           | 코드 라인 이동                                                              | `Ctrl` + `Shift` + `Up`/`Down`            | `Shift` + `Command` + `Up`/`Down`      |
 | Find Next / Move to Next Occurrence              | 현재 커서의 단어와 같은 다음 단어로 이동                                    | `F3` / `Shift` + `F3`                     | `Command` + `G`                        |
 | Add Selection for Next Occurrence                | 현재 커서의 단어와 같은 다음 단어 추가 선택                                 | `Alt` + `J`                               | `Control` + `G`                        |
 | Unselect Occurrence                              | 마지막에 선택한 단어 취소                                                   | `Alt` + `Shift` + `J`                     | `Control` + `Shift` + `G`              |
@@ -79,8 +82,6 @@
 | Clone Caret Above/Below                          | 위/아래에 커서 추가 ([참고](https://stackoverflow.com/a/46266920/10629432)) | `Ctrl` + `Ctrl`(**_Hold_**) + `Up`/`Down` | -                                      |
 | Create Rectangular Selectioon (Column Selection) | 컬럼 셀렉션                                                                 | `Middle Click` / `Alt` + `Left Click`     | -                                      |
 | Column Selection Mode (Toggle)                   | 컬럼 셀렉션 모드                                                            | `Alt` + `Shift` + `Insert`                | `Shift` + `Command` + `8`              |
-| Duplicate Line or Selection                      | 현재 라인 / 블록 영역 복제                                                  | `Ctrl` + `D`                              | `Command` + `D`                        |
-| Delete Line                                      | 현재 라인 삭제                                                              | `Ctrl` + `Y`                              | `Command` + `Delete`                   |
 | Override Methods                                 | 오버라이딩 팝업                                                             | `Ctrl` + `O`                              | `Control` + `O`                        |
 | View - Parameter Info                            | 생성자, 메서드 등의 파라미터 정보 확인                                      | `Ctrl` + `P`                              | `Command` + `P`                        |
 | View - Quick Definition                          | 정의 미리보기                                                               | `Ctrl` + `Shift` + `I`                    | `Option` + `Space` / `Command` + `Y`   |
@@ -93,7 +94,6 @@
 | Rename                                           | 이름 변경                                                                   | `Shift` + `F6`                            | `Shift` + `F6`                         |
 | Edit - Find                                      | 찾기                                                                        | `Ctrl` + `F`                              | `Command` + `F`                        |
 | Edit - Find in Files                             | 다른 파일에서도 찾기 (scope: project, module, directory)                    | `Ctrl` + `Shift` + `F`                    | `Command` + `Shift` + `F`              |
-| Move Statement Up/Down                           | 코드 라인 이동                                                              | `Ctrl` + `Shift` + `Up`/`Down`            | `Shift` + `Command` + `Up`/`Down`      |
 | Navigate - Next/Previous Highlighted Error       | 다음 이슈로 포커스 이동                                                     | `F2` / `Shift` + `F2`                     | `F2` / `Shift` + `F2`                  |
 | Insert Live Template (Code Snippets)             | 코드 조각                                                                   | `Ctrl` + `J`                              | `Command` + `J`                        |
 
@@ -220,5 +220,6 @@ Sourcepath는 src.zip을 선택한다.
 - [Maven Helper](https://plugins.jetbrains.com/plugin/7179-maven-helper)
 - [File Watchers](https://plugins.jetbrains.com/plugin/7177-file-watchers): 파일 수정 시 빌드 트리거
 - [Codota](https://plugins.jetbrains.com/plugin/7638-codota-ai-autocomplete-for-java-and-javascript/): AI 자동완성 - 성능 저하 가능
-  - [Tabnine](https://plugins.jetbrains.com/plugin/12798-tabnine-ai-autocomplete-javascript-c-python-ruby-rust-go-php--/)
-- [Extra Icons](https://plugins.jetbrains.com/plugin/11058-extra-icons/): 기본적으로 제공해주는 아이콘 외 추가 아이콘
+  - [Tabnine](https://plugins.jetbrains.com/plugin/12798-tabnine-ai-autocomplete-javascript-c-python-ruby-rust-go-php--/)으로 변경되었다.
+- [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons): 기본적으로 제공해주는 아이콘 외 추가 아이콘
+  - [Extra Icons](https://plugins.jetbrains.com/plugin/11058-extra-icons/)
