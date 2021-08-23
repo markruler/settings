@@ -4,21 +4,25 @@
   - [그래픽 카드 드라이버](#그래픽-카드-드라이버)
   - [Background](#background)
   - [terminal 투명도 설정](#terminal-투명도-설정)
-  - [VS Code 설치](#vs-code-설치)
   - [command auto suggestion (not fuzzy suggestion)](#command-auto-suggestion-not-fuzzy-suggestion)
-  - [vim](#vim)
-  - [tmux](#tmux)
+  - [터미널 도구](#터미널-도구)
+  - [sdkman](#sdkman)
+  - [GNOME Shell Extensions](#gnome-shell-extensions)
   - [dock](#dock)
   - [Ubuntu login loop](#ubuntu-login-loop)
-  - [GNOME Shell Extensions](#gnome-shell-extensions)
+  - [VS Code 설치](#vs-code-설치)
+  - [JetBrains Toolbox](#jetbrains-toolbox)
   - [NordVPN 설치](#nordvpn-설치)
   - [블로깅을 위한 hugo 다운로드](#블로깅을-위한-hugo-다운로드)
   - [윈도우 앱을 위한 `Wine`](#윈도우-앱을-위한-wine)
   - [가상 머신 관리 도구 Virtual Box](#가상-머신-관리-도구-virtual-box)
   - [provisioning 도구 Vagrant](#provisioning-도구-vagrant)
+  - [Postman](#postman)
+  - [DBeaver](#dbeaver)
+  - [Slack](#slack)
 
 ```bash
-cat /etc/debian_verison
+cat /etc/debian_version
 # bullseye/sid
 ```
 
@@ -71,42 +75,20 @@ watch -d -n 1 nvidia-smi
 
 ![ubuntu-terminal-transparent](../images/ubuntu-terminal-transparent.png)
 
-## VS Code [설치](https://gist.github.com/philoskim/a79440bd51ae40f04a4d7cafa472caf1)
-
-snap으로 설치할 경우 한글이 입력되지 않습니다.
-Slack 등 다른 애플리케이션도 snap으로 설치하면 마찬가지로 한영 전환(`Shift`+`Space`)이 안 됩니다.
-(저는 Slack을 우분투 소프트웨어 센터에서 설치했는데 snap을 통해 설치되나 보네요)
-
-![ubuntu-remove-slack](../images/ubuntu-remove-slack.png)
-
-- Slack도 [홈페이지에서 직접 다운로드](https://slack.com/intl/en-kr/downloads/linux)하시면 됩니다.
-
-```bash
-# 기존에 snap으로 설치했다면 삭제
-sudo snap remove code
-
-cd /tmp
-# https://code.visualstudio.com/download `.deb` 파일 다운로드
-wget https://az764295.vo.msecnd.net/stable/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/code_1.52.1-1608136922_amd64.deb
-
-# 설치
-sudo dpkg -i code_1.52.1-1608136922_amd64.deb
-
-# 지울 때는
-# sudo dpkg -r code
-```
-
 ## command auto suggestion (not fuzzy suggestion)
 
-- fish: 자체 제공
+- zsh: 플러그인 [설치](https://github.com/zsh-users/zsh-autosuggestions)
+  - macOS 처럼 oh-my-zsh를 사용할 수 있습니다.
 
 ```bash
-sudo apt install -y fish
-which fish
-# /usr/bin/fish
-```
+sudo apt-get install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-```bash
+# $HOME/.zshrc
+ZSH_THEME="gozilla"
+
+source $HOME/.zshrc
+
 cat /etc/shells
 # /bin/sh
 # /bin/bash
@@ -117,9 +99,14 @@ cat /etc/shells
 # /usr/bin/dash
 # /usr/bin/tmux
 # /usr/bin/fish
+# /bin/zsh
+# /usr/bin/zsh
+
+chsh -s /bin/zsh
+reboot # 리부팅해야 적용된다.
 ```
 
-- 저의 경우엔 root 계정만 `fish`를 사용하고 일반 사용자 계정은 `bash`를 사용합니다.
+- root 계정만 `fish`를 사용하고 일반 사용자 계정은 `bash`를 사용할 수도 있습니다.
 
 ```bash
 echo $SHELL
@@ -135,27 +122,52 @@ grep <username> /etc/passwd
 # >>> 리부트!
 ```
 
-- zsh: 플러그인 [설치](https://github.com/zsh-users/zsh-autosuggestions)
-
-```bash
-sudo apt-get install zsh
-```
-
-## vim
-
-```bash
-sudo apt-get install vim
-```
+## 터미널 도구
 
 - [$HOME/.vimrc](../config/.vimrc)
 
-## tmux
-
 ```bash
+sudo apt-get install vim
 sudo apt-get install tmux
+sudo apt-get install fish
+sudo apt-get install bash-completion
 ```
 
 - [$HOME/.tmux.conf](../config/.tmux.conf)
+
+## [sdkman](https://sdkman.io/)
+
+bash에서 설치했다면 `~/.bashrc`에 있는 sdkman 설정을 `~/.zshrc`에도 복사해야 합니다.
+
+```bash
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
+```bash
+sdk version
+> SDKMAN 5.11.2+698
+```
+
+```bash
+sdk list
+# [gradle, maven, java, ...]
+
+# sdk list [package]
+sdk install maven 3.6.3
+sdk install gradle 6.8.3
+
+sdk list java
+sdk install java 11.0.11.hs-adpt
+java --version
+
+sdk install java 8.0.292.hs-adpt
+java -version
+```
+
+## [GNOME Shell Extensions](https://extensions.gnome.org/)
+
+- 도움되는 확장 기능
 
 ## dock
 
@@ -219,9 +231,41 @@ vi /etc/gdm3/custom.conf
 # InitialSetupEnable=False
 ```
 
-## GNOME Shell Extensions
+## VS Code [설치](https://gist.github.com/philoskim/a79440bd51ae40f04a4d7cafa472caf1)
 
-- 도움되는 확장 기능
+snap으로 설치할 경우 한글이 입력되지 않습니다.
+Slack 등 다른 애플리케이션도 snap으로 설치하면 마찬가지로 한영 전환(`Shift`+`Space`)이 안 됩니다.
+(저는 Slack을 우분투 소프트웨어 센터에서 설치했는데 snap을 통해 설치되나 보네요)
+
+![ubuntu-remove-slack](../images/ubuntu-remove-slack.png)
+
+- Slack도 [홈페이지에서 직접 다운로드](https://slack.com/intl/en-kr/downloads/linux)하시면 됩니다.
+
+```bash
+# 기존에 snap으로 설치했다면 삭제
+sudo snap remove code
+
+cd /tmp
+# https://code.visualstudio.com/download `.deb` 파일 다운로드
+wget https://az764295.vo.msecnd.net/stable/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/code_1.52.1-1608136922_amd64.deb
+
+# 설치
+sudo dpkg -i code_1.52.1-1608136922_amd64.deb
+
+# 지울 때는
+# sudo dpkg -r code
+```
+
+## [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)
+
+IntelliJ IDEA, GoLand를 비롯한 JetBrains 제품들을 손쉽게 관리할 수 있다.
+
+```bash
+tar xf jetbrains-toolbox-1.21.9712.tar.gz
+cd jetbrains-toolbox-1.21.9712
+
+./jetbrains-toolbox
+```
 
 ## NordVPN 설치
 
@@ -329,3 +373,20 @@ wget https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
 sudo apt install ./vagrant_2.2.14_x86_64.deb
 vagrant --version
 ```
+
+## Postman
+
+```bash
+sudo snap install postman
+```
+
+## DBeaver
+
+```bash
+https://dbeaver.io/download/
+```
+
+## [Slack](https://slack.com/intl/en-kr/downloads/linux)
+
+snap이나 Ubuntu Software 앱으로 설치할 경우 한글이 입력되지 않는다.
+공식 홈페이지에서 `.deb`이나 `.rpm` 패키지로 다운로드 받아서 설치한다.
