@@ -12,6 +12,7 @@
     - [Analyze Plugin Startup Performance](#analyze-plugin-startup-performance)
     - [Do not step into the classes](#do-not-step-into-the-classes)
   - [Preferences](#preferences)
+    - [Appearance](#appearance)
     - [Encoding](#encoding)
     - [자동으로 코드가 접히는 것 해제](#자동으로-코드가-접히는-것-해제)
     - [주석했을 때 맨 앞에 `//`가 들어가는 경우](#주석했을-때-맨-앞에-가-들어가는-경우)
@@ -133,6 +134,10 @@ IntelliJ 시작 시 플러그인들의 영향을 확인할 수 있다.
 - [x] Resume only the current thread
 
 ## Preferences
+
+### Appearance
+
+개인적으로 `D2Coding` 폰트보다 `Ubuntu` 폰트가 가독성이 더 좋다.
 
 ### Encoding
 
