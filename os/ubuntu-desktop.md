@@ -12,6 +12,7 @@
   - [Ubuntu login loop](#ubuntu-login-loop)
   - [VS Code 설치](#vs-code-설치)
   - [JetBrains Toolbox](#jetbrains-toolbox)
+  - [Eclipse](#eclipse)
   - [NordVPN 설치](#nordvpn-설치)
   - [블로깅을 위한 hugo 다운로드](#블로깅을-위한-hugo-다운로드)
   - [윈도우 앱을 위한 `Wine`](#윈도우-앱을-위한-wine)
@@ -266,6 +267,55 @@ cd jetbrains-toolbox-1.21.9712
 
 ./jetbrains-toolbox
 ```
+
+## Eclipse
+
+IntelliJ는 Toolbox로 쉽게 관리할 수 있지만, Eclipse는 번거로운 작업이 있다.
+
+- [버전 요구 사항](https://wiki.eclipse.org/Eclipse/Installation)
+  - [Eclipse 4.6 (Neon)](https://www.eclipse.org/downloads/packages/release/neon)부터 Java 8 이상 필수
+  - [Eclipse 4.16 (2020-06)](https://www.eclipse.org/downloads/packages/release/2020-06/r)
+  - [Eclipse 4.17 (2020-09)](https://www.eclipse.org/downloads/packages/release/2020-09/r)부터 Java 11 이상 필수
+
+```bash
+cp eclipse-jee-2020-06-R-linux-gtk-x86_64.tar.gz /tmp
+
+cd /tmp
+tar xvf eclipse-jee-2020-06-R-linux-gtk-x86_64.tar.gz -C $HOME
+
+cd ~/eclipse
+./eclipse
+```
+
+```bash
+vi /usr/share/applications/eclipse.desktop
+```
+
+```properties
+[Desktop Entry]
+Type=Application
+Name=Eclipse
+Comment=Eclipse Integrated Development Environment
+Icon=/home/markruler/eclipse/icon.xpm
+Exec=/home/markruler/eclipse/eclipse
+Terminal=false
+Categories=Development;IDE;Java;
+```
+
+```ini
+; vi ~/eclipse/eclipse.ini
+; 꼭 vmargs 앞에 vm이 와야 한다.
+
+-vm
+/home/markruler/.sdkman/candidates/java/current/jre/bin/java
+-vmargs
+-Dosgi.requiredJavaVersion=1.8
+-Dosgi.instance.area.default=@user.home/eclipse-workspace
+```
+
+![ubuntu-eclipse-to-dock](../images/ubuntu-eclipse-to-dock.png)
+
+'즐겨찾기에 추가'하면 dock에 추가된다.
 
 ## NordVPN 설치
 
