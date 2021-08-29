@@ -1,6 +1,7 @@
 # Ubuntu Desktop
 
 - [Ubuntu Desktop](#ubuntu-desktop)
+  - [locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기](#locale은-한국으로-유지한-채-홈-디렉토리-명만-영어로-바꾸기)
   - [그래픽 카드 드라이버](#그래픽-카드-드라이버)
   - [Background](#background)
   - [terminal 투명도 설정](#terminal-투명도-설정)
@@ -25,6 +26,49 @@
 ```bash
 cat /etc/debian_version
 # bullseye/sid
+```
+
+## locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기
+
+```bash
+export LANG=C; xdg-user-dirs-gtk-update
+
+ls $HOME
+# Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+cat ~/.config/user-dirs.locale
+# C
+cat ~/.config/user-dirs.dirs
+# XDG_DESKTOP_DIR="$HOME/Desktop"
+# XDG_DOWNLOAD_DIR="$HOME/Downloads"
+# XDG_TEMPLATES_DIR="$HOME/Templates"
+# XDG_PUBLICSHARE_DIR="$HOME/Public"
+# XDG_DOCUMENTS_DIR="$HOME/Documents"
+# XDG_MUSIC_DIR="$HOME/Music"
+# XDG_PICTURES_DIR="$HOME/Pictures"
+# XDG_VIDEOS_DIR="$HOME/Videos"
+
+locale
+# LANG=ko_KR.UTF-8
+# LANGUAGE=
+# LC_CTYPE="ko_KR.UTF-8"
+# LC_NUMERIC="ko_KR.UTF-8"
+# LC_TIME="ko_KR.UTF-8"
+# LC_COLLATE="ko_KR.UTF-8"
+# LC_MONETARY="ko_KR.UTF-8"
+# LC_MESSAGES="ko_KR.UTF-8"
+# LC_PAPER="ko_KR.UTF-8"
+# LC_NAME="ko_KR.UTF-8"
+# LC_ADDRESS="ko_KR.UTF-8"
+# LC_TELEPHONE="ko_KR.UTF-8"
+# LC_MEASUREMENT="ko_KR.UTF-8"
+# LC_IDENTIFICATION="ko_KR.UTF-8"
+# LC_ALL=
+```
+
+```bash
+# 다시 한국어로
+export LANG=ko_KR.utf8; xdg-user-dirs-gtk-update
 ```
 
 ## 그래픽 카드 드라이버
