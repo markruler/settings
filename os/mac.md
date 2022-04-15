@@ -2,6 +2,7 @@
 
 - [macOS](#macos)
   - [System Preferences](#system-preferences)
+    - [`Shift` + `Space`로 한/영전환](#shift--space로-한영전환)
   - [iTerm2 Preferences](#iterm2-preferences)
   - [zsh](#zsh)
   - [HomeBrew](#homebrew)
@@ -11,17 +12,72 @@
 
 ## System Preferences
 
-- `Shift` + `Space`로 한/영전환
-  - Catalina: `~/Library/Preferences/com.apple.symbolichotkeys.plist` 파일을 Xcode로 열고 `<key>61</key>`에서 `<integer>1048576</integer>`를 `<integer>131072</integer>`로 수정, OS 리부트
-    - Xcode는 App Store에서 다운로드할 수 있다.
-    - Xcode를 다운로드하면 git을 사용할 때 license agreements 에 대한 문구가 나온다. 아래 명령어를 실행해서 동의해준다.
+### `Shift` + `Space`로 한/영전환
 
-      ```zsh
-      sudo xcodebuild -license
-      ```
+- Catalina: `~/Library/Preferences/com.apple.symbolichotkeys.plist` 파일을 Xcode로 열고 `<key>61</key>`에서 `<integer>1048576</integer>`를 `<integer>131072</integer>`로 수정, OS 리부트
+  - Xcode는 App Store에서 다운로드할 수 있다.
+  - Xcode를 다운로드하면 git을 사용할 때 license agreements 에 대한 문구가 나온다. 아래 명령어를 실행해서 동의해준다.
 
-  - Big Sur: Keyboard > Shortcuts > Input Sources > Select the previous input source: `fn` + `Shift` + `Space`
-  - Monterey: Catalina와 동일
+    ```bash
+    sudo xcodebuild -license
+    ```
+
+  - `com.apple.symbolichotkeys.plist` 파일을 복원하려면 Keyboard > Shortcuts > Keyboard - `Restore Defaults`
+- Big Sur: Keyboard > Shortcuts > Input Sources > Select the previous input source: `fn` + `Shift` + `Space`
+- Monterey: Catalina와 동일하지만 VIM으로 해결해보자.
+
+Apple binary property list (`.plist`) 형식의 파일을 XML 형식으로 변환한다.
+
+```bash
+cd ~/Library/Preferences/
+file com.apple.symbolichotkeys.plist
+# com.apple.symbolichotkeys.plist: Apple binary property list
+
+plutil -convert xml1 com.apple.symbolichotkeys.plist
+file com.apple.symbolichotkeys.plist
+# com.apple.symbolichotkeys.plist: XML 1.0 document text, ASCII text
+```
+
+XML 문서를 편집한다.
+
+```bash
+vi com.apple.symbolichotkeys.plist
+```
+
+```xml
+<!-- 61번 키 - kSHKSelectNextSourceInInputMenu -->
+<key>61</key>
+<dict>
+  <key>enabled</key>
+  <true/>
+  <key>value</key>
+  <dict>
+    <key>parameters</key>
+    <array>
+      <integer>32</integer>
+      <integer>49</integer>
+      <!-- <integer>786432</integer> -->
+      <integer>131072</integer>
+    </array>
+    <key>type</key>
+    <string>standard</string>
+  </dict>
+</dict>
+```
+
+다시 Apple binary property list 형식으로 변환한다.
+
+```bash
+plutil -convert binary1 com.apple.symbolichotkeys.plist
+file com.apple.symbolichotkeys.plist
+# com.apple.symbolichotkeys.plist: Apple binary property list
+```
+
+머신을 재시동한다.
+
+```bash
+sudo reboot
+```
 
 ## [iTerm2](https://iterm2.com/) Preferences
 
