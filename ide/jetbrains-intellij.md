@@ -24,6 +24,7 @@
     - [SDK 소스 파일 연결](#sdk-소스-파일-연결)
     - [Linux의 경우 Dock에 아이콘을 추가하려면](#linux의-경우-dock에-아이콘을-추가하려면)
   - [플러그인](#플러그인)
+    - [Optional](#optional)
 
 ## 자주 쓰는 단축키 (default keymap 기준)
 
@@ -139,6 +140,9 @@ IntelliJ 시작 시 플러그인들의 영향을 확인할 수 있다.
 
 개인적으로 `D2Coding` 폰트보다 `Ubuntu` 폰트가 가독성이 더 좋다.
 
+- JetBrains Mono
+- IBM Plex Sans
+
 ### Encoding
 
 Editor > File Encoding: `UTF-8`
@@ -206,25 +210,32 @@ Sourcepath는 src.zip을 선택한다.
 
 ## 플러그인
 
-- [SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint): 문제의 소지가 될 수 있는 코드 알림 ([Static program analysis](https://en.wikipedia.org/wiki/Static_program_analysis)), Preferences > Tools > SonarLint > Rules > Restore Defaults
+- [SonarLint](https://plugins.jetbrains.com/plugin/7973-sonarlint): 정적 분석
+  - ([Static program analysis](https://en.wikipedia.org/wiki/Static_program_analysis))
+  - 설정을 원복하고 싶은 경우: Preferences > Tools > SonarLint > Rules > Restore Defaults
+  - [SpotBugs](https://plugins.jetbrains.com/plugin/14014-spotbugs): FindBugs
 - [CodeMetrics](https://plugins.jetbrains.com/plugin/12159-codemetrics): 코드의 복잡도 계산
-- [google-java-format](https://plugins.jetbrains.com/plugin/8527-google-java-format)
-- [GitToolBox](https://plugins.jetbrains.com/plugin/7499-gittoolbox)
-- [CheckStyle-IDEA](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea)
-- [EditorConfig](https://plugins.jetbrains.com/plugin/7294-editorconfig): `.editorconfig` 지원
+- [GitToolBox](https://plugins.jetbrains.com/plugin/7499-gittoolbox): Git 부가 기능
+- [CheckStyle-IDEA](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea): 정적 분석
 - [Snyk Vulnerability Scanner](https://plugins.jetbrains.com/plugin/10972-snyk-vulnerability-scanner/): 보안 취약점 스캐너
-- [Presentation Assistant](https://plugins.jetbrains.com/plugin/7345-presentation-assistant): 단축키 알림
-  - [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x): 단축키 알림
-- [Sensei by Secure Code Warrior](https://plugins.jetbrains.com/plugin/14015-sensei-by-secure-code-warrior-/): 특정 코딩 컨벤션을 정한 후 위반 사항 알림
 - [CodeGlance](https://plugins.jetbrains.com/plugin/7275-codeglance): 에디터 미니 맵
 - [Waka Time](https://plugins.jetbrains.com/plugin/7425-wakatime): 프로그래밍 시간 계산
 - [Rainbow Brackets](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets): 중괄호(`{`, `}`)쌍을 다양한 색으로 구분
 - [Indent Rainbow](https://plugins.jetbrains.com/plugin/13308-indent-rainbow): 들여 쓴 부분을 색으로 구분
 - [Rainbow CSV](https://plugins.jetbrains.com/plugin/12896-rainbow-csv): CSV에서 색으로 구분
+
+### Optional
+
+- 정적 분석 도구
+  - [Sensei by Secure Code Warrior](https://plugins.jetbrains.com/plugin/14015-sensei-by-secure-code-warrior-/): 특정 코딩 컨벤션을 정한 후 위반 사항 알림
+  - [EditorConfig](https://plugins.jetbrains.com/plugin/7294-editorconfig): `.editorconfig` 지원
+  - [google-java-format](https://plugins.jetbrains.com/plugin/8527-google-java-format): 정적 분석
 - [JPA Buddy](https://plugins.jetbrains.com/plugin/15075-jpa-buddy): JPA를 사용한다면 편리한 기능들 다수 제공
+- [Presentation Assistant](https://plugins.jetbrains.com/plugin/7345-presentation-assistant): 단축키 알림
+  - [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x): 단축키 알림
 - [Maven Helper](https://plugins.jetbrains.com/plugin/7179-maven-helper)
 - [File Watchers](https://plugins.jetbrains.com/plugin/7177-file-watchers): 파일 수정 시 빌드 트리거
-- [Codota](https://plugins.jetbrains.com/plugin/7638-codota-ai-autocomplete-for-java-and-javascript/): AI 자동완성 - 성능 저하 가능
-  - [Tabnine](https://plugins.jetbrains.com/plugin/12798-tabnine-ai-autocomplete-javascript-c-python-ruby-rust-go-php--/)으로 변경되었다.
+- [~~Codota~~](https://plugins.jetbrains.com/plugin/7638-codota-ai-autocomplete-for-java-and-javascript/): AI 자동완성 - 성능 저하
+  - [~~Tabnine~~](https://plugins.jetbrains.com/plugin/12798-tabnine-ai-autocomplete-javascript-c-python-ruby-rust-go-php--/)으로 변경되었다.
 - [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons): 기본적으로 제공해주는 아이콘 외 추가 아이콘
   - [Extra Icons](https://plugins.jetbrains.com/plugin/11058-extra-icons/)
