@@ -22,6 +22,8 @@
       - [in VS Code](#in-vs-code)
       - [Git](#git)
   - [Windows Defender](#windows-defender)
+  - [파일 최근 항목 확장하기](#파일-최근-항목-확장하기)
+  - [Killing Process](#killing-process)
 
 ## 한영전환키 변경
 
@@ -331,4 +333,18 @@ Windows 11로 업데이트 후 Windows Defender를 열 수 없는 경우 아래 
 
 ```powershell
 Get-AppxPackage Microsoft.SecHealthUI -AllUsers | Reset-AppxPackage
+```
+
+## 파일 최근 항목 확장하기
+
+- [출처](https://answers.microsoft.com/en-us/windows/forum/all/how-to-increase-the-number-of-recent-files/2ec5e80a-c8f1-4e25-bd5e-4c98169a520e)
+  - Registry Editor — `regedit`
+  - `HKEY_CURRENT_USER\Software\Microsoft\ Windows\CurrentVersion\Explorer\Advanced`
+    - `JumpListItems_Maximum` — 10진수 20~30으로 설정
+    - 만약 `JumpListItems_Maximum`가 없으면 `DWORD (32-bit)` 값으로 추가해준다.
+
+## Killing Process
+
+```bat
+taskkill /F /PID ${PID}
 ```
