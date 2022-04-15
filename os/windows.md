@@ -1,12 +1,12 @@
-# Windows 10 Desktop
+# Windows Desktop
 
-- [Windows 10 Desktop](#windows-10-desktop)
+- [Windows Desktop](#windows-desktop)
   - [한영전환키 변경](#한영전환키-변경)
   - [Hyper-V 활성화](#hyper-v-활성화)
   - [WSL2 (Windows Subsystem for Linux 2) 활성화](#wsl2-windows-subsystem-for-linux-2-활성화)
     - [Docker for Windows와 같이 사용할 경우 주의할 점](#docker-for-windows와-같이-사용할-경우-주의할-점)
     - [Locale 설정](#locale-설정)
-  - [패키지 매니저](#패키지-매니저)
+  - [Package Manager](#package-manager)
     - [scoop](#scoop)
     - [Chocolatey](#chocolatey)
   - [neofetch](#neofetch)
@@ -21,6 +21,7 @@
       - [in Windows terminal app](#in-windows-terminal-app)
       - [in VS Code](#in-vs-code)
       - [Git](#git)
+  - [Windows Defender](#windows-defender)
 
 ## 한영전환키 변경
 
@@ -127,22 +128,28 @@ locale
 # LANG=ko_KR.UTF-8
 ```
 
-## 패키지 매니저
+## Package Manager
 
-### [scoop](https://github.com/lukesampson/scoop)
+### scoop
+
+- [lukesampson/scoop](https://github.com/lukesampson/scoop)
 
 ```powershell
-# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 ```
 
-### [Chocolatey](https://github.com/chocolatey/choco)
+### Chocolatey
+
+- [chocolatey/choco](https://github.com/chocolatey/choco)
 
 ```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
-## [neofetch](https://github.com/dylanaraps/neofetch)
+## neofetch
+
+- [dylanaraps/neofetch](https://github.com/dylanaraps/neofetch)
 
 ```powershell
 scoop install neofetch
@@ -152,7 +159,9 @@ neofetch
 
 ![windows10-neofetch.png](../images/windows10-neofetch.png)
 
-## [sdkman](https://sdkman.io/)
+## sdkman
+
+- [Download](https://sdkman.io/)
 
 ```bash
 # sdkman이 의존하는 zip 설치
@@ -179,7 +188,9 @@ sdk install gradle 6.8.3
 sdk install java 11.0.11.hs-adpt
 ```
 
-## [nvm](https://github.com/nvm-sh/nvm)
+## nvm
+
+- [nvm-sh/nvm](https://github.com/nvm-sh/nvm)
 
 Node.js 버전 매니저
 
@@ -214,8 +225,9 @@ Get-Command node
 # C:\Users\imcxs\scoop\apps\nvm\current\nodejs\nodejs\node.exe
 ```
 
-## [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n0dx20hk701)
+## Windows Terminal
 
+- [Download](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n0dx20hk701)
 - [How to make a pretty prompt in Windows Terminal with Powerline, Nerd Fonts, Cascadia Code, WSL, and oh-my-posh](https://www.hanselman.com/blog/HowToMakeAPrettyPromptInWindowsTerminalWithPowerlineNerdFontsCascadiaCodeWSLAndOhmyposh.aspx)
 
 ![windows10-terminal](../images/windows10-terminal.png)
@@ -229,13 +241,17 @@ Get-Command node
 - run as a Administrator: `Ctrl` + `Shift` + `Mouse Left`
   - [(by default)](http://nuts4.net/post/windows-terminal-run-as-admin): `C:\Windows\system32\cmd.exe /c start /b wt`
 
-### [ConEmu](https://conemu.github.io/)
+### ConEmu
+
+- [Download](https://conemu.github.io/)
 
 ```PowerShell
 choco install ConEmu
 ```
 
-### [posh-git](https://github.com/dahlbyk/posh-git)
+### posh-git
+
+[dahlbyk/posh-git](https://github.com/dahlbyk/posh-git)
 
 - a PowerShell module that integrates Git and PowerShell by providing Git status summary information that can be displayed in the PowerShell prompt, e.g.
 
@@ -243,7 +259,9 @@ choco install ConEmu
 Install-Module posh-git -Scope CurrentUser
 ```
 
-### [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh?WT.mc_id=-blog-scottha)
+### oh-my-posh
+
+- [JanDeDobbeleer/oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh?WT.mc_id=-blog-scottha)
 
 ```ps
 Install-Module oh-my-posh -Scope CurrentUser
@@ -270,7 +288,9 @@ Import-Module oh-my-posh
 Set-Theme paradox
 ```
 
-#### to set a font ([Nerd Fonts](https://www.nerdfonts.com/))
+#### to set a font (Nerd Fonts)
+
+- [Download](https://www.nerdfonts.com/)
 
 ```ps
 $ThemeSettings
@@ -303,4 +323,12 @@ git config --global core.editor=vim
 ```powershell
 $GitPromptSettings
 $DefaultUser = 'yourUsernameHere'
+```
+
+## Windows Defender
+
+Windows 11로 업데이트 후 Windows Defender를 열 수 없는 경우 아래 커맨드를 사용한다.
+
+```powershell
+Get-AppxPackage Microsoft.SecHealthUI -AllUsers | Reset-AppxPackage
 ```
