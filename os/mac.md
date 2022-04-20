@@ -95,25 +95,26 @@ sudo reboot
 
 - [oh my zsh](https://github.com/ohmyzsh/ohmyzsh)
 
-```zsh
+```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 - zsh Theme: [gozilla](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes#gozilla)
 
-```zsh
+```bash
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="gozilla"
 ```
 
-```zsh
+```bash
 vi ~/.zshrc
 # alias ll="ls -hal"
 ```
 
 ## [HomeBrew](https://brew.sh/index_ko)
 
-```zsh
+```bash
+cd $HOME
 # git clone https://github.com/Homebrew/brew homebrew
 mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
 eval "$(homebrew/bin/brew shellenv)"
@@ -121,13 +122,17 @@ brew update --force --quiet
 chmod -R go-w "$(brew --prefix)/share/zsh"
 ```
 
-```zsh
+```bash
+brew install telnet
+```
+
+```bash
 brew update && brew upgrade && brew cleanup
 ```
 
 ## [sdkman](https://sdkman.io/)
 
-```zsh
+```bash
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk version
@@ -136,7 +141,7 @@ sdk version
 
 - [LINE의 OpenJDK 적용기: 호환성 확인부터 주의 사항까지](https://engineering.linecorp.com/ko/blog/line-open-jdk/)
 
-```zsh
+```bash
 sdk list java
 # Available Java Versions
 # ...
@@ -155,14 +160,14 @@ sdk list java
 #                | >>> | 8.0.292.hs   | adpt    | installed  | 8.0.292.hs-adpt
 ```
 
-```zsh
+```bash
 sdk install maven 3.6.3
 sdk use maven 3.6.3
 
 mvn --version
 ```
 
-```zsh
+```bash
 sdk install gradle 6.9
 ```
 
