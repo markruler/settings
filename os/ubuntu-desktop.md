@@ -4,24 +4,26 @@
   - [locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기](#locale은-한국으로-유지한-채-홈-디렉토리-명만-영어로-바꾸기)
   - [그래픽 카드 드라이버](#그래픽-카드-드라이버)
   - [Background](#background)
-  - [terminal 투명도 설정](#terminal-투명도-설정)
+  - [Terminal](#terminal)
+    - [투명도 설정](#투명도-설정)
   - [command auto suggestion (not fuzzy suggestion)](#command-auto-suggestion-not-fuzzy-suggestion)
-  - [터미널 도구](#터미널-도구)
-  - [sdkman](#sdkman)
+  - [Tools](#tools)
+  - [Git](#git)
+  - [SDK Manager](#sdk-manager)
   - [GNOME Shell Extensions](#gnome-shell-extensions)
-  - [dock](#dock)
+    - [dash-to-dock](#dash-to-dock)
   - [Ubuntu login loop](#ubuntu-login-loop)
-  - [VS Code 설치](#vs-code-설치)
+  - [Package Manager](#package-manager)
+  - [Visual Studio Code](#visual-studio-code)
+  - [Docker](#docker)
   - [JetBrains Toolbox](#jetbrains-toolbox)
   - [Eclipse](#eclipse)
-  - [NordVPN 설치](#nordvpn-설치)
-  - [블로깅을 위한 hugo 다운로드](#블로깅을-위한-hugo-다운로드)
-  - [윈도우 앱을 위한 `Wine`](#윈도우-앱을-위한-wine)
   - [가상 머신 관리 도구 Virtual Box](#가상-머신-관리-도구-virtual-box)
   - [provisioning 도구 Vagrant](#provisioning-도구-vagrant)
-  - [Postman](#postman)
-  - [DBeaver](#dbeaver)
-  - [Slack](#slack)
+  - [1Password](#1password)
+    - [snap](#snap)
+    - [deb](#deb)
+  - [NordVPN 설치](#nordvpn-설치)
 
 ```bash
 cat /etc/debian_version
@@ -116,7 +118,9 @@ watch -d -n 1 nvidia-smi
 
 - [Unsplash](https://unsplash.com/photos/k5Vj3gx4vHE)
 
-## terminal 투명도 설정
+## Terminal
+
+### 투명도 설정
 
 ![ubuntu-terminal-transparent](../images/ubuntu-terminal-transparent.png)
 
@@ -151,36 +155,47 @@ chsh -s /bin/zsh
 reboot # 리부팅해야 적용된다.
 ```
 
-- root 계정만 `fish`를 사용하고 일반 사용자 계정은 `bash`를 사용할 수도 있습니다.
+root 계정만 `fish`를 사용하고 일반 사용자 계정은 `bash`를 사용할 수도 있다.
 
 ```bash
 echo $SHELL
 # /bin/bash
 # chsh --shell /usr/bin/fish
 
-grep <username> /etc/passwd
-# changsu:x:1000:1000:changsu,,,:/home/changsu:/usr/bin/fish
+grep $USER /etc/passwd
+# markruler:x:1000:1000:markruler,,,:/home/markruler:/usr/bin/fish
 
-sudo usermod --shell /bin/bash <username>
-grep <username> /etc/passwd
-# changsu:x:1000:1000:changsu,,,:/home/changsu:/bin/bash
-# >>> 리부트!
+sudo usermod --shell /bin/bash $USER
+grep $USER /etc/passwd
+# markruler:x:1000:1000:markruler,,,:/home/markruler:/bin/bash
+
+reboot
 ```
 
-## 터미널 도구
+## Tools
 
 - [$HOME/.vimrc](../config/.vimrc)
 
 ```bash
 sudo apt-get install vim
 sudo apt-get install tmux
-sudo apt-get install fish
+# sudo apt-get install fish
 sudo apt-get install bash-completion
+```
+
+## Git
+
+```sh
+git config --global user.email "imcxsu@gmail.com"
+git config --global user.name "Changsu Im"
+git config --global core.editor "vim"
 ```
 
 - [$HOME/.tmux.conf](../config/.tmux.conf)
 
-## [sdkman](https://sdkman.io/)
+## SDK Manager
+
+- [sdkman](https://sdkman.io/)
 
 bash에서 설치했다면 `~/.bashrc`에 있는 sdkman 설정을 `~/.zshrc`에도 복사해야 합니다.
 
@@ -214,7 +229,7 @@ java -version
 
 - 도움되는 확장 기능
 
-## dock
+### dash-to-dock
 
 - [options](https://github.com/micheleg/dash-to-dock/blob/master/schemas/org.gnome.shell.extensions.dash-to-dock.gschema.xml)
 
@@ -276,40 +291,114 @@ vi /etc/gdm3/custom.conf
 # InitialSetupEnable=False
 ```
 
-## VS Code [설치](https://gist.github.com/philoskim/a79440bd51ae40f04a4d7cafa472caf1)
+## Package Manager
 
-snap으로 설치할 경우 한글이 입력되지 않습니다.
-Slack 등 다른 애플리케이션도 snap으로 설치하면 마찬가지로 한영 전환(`Shift`+`Space`)이 안 됩니다.
-(저는 Slack을 우분투 소프트웨어 센터에서 설치했는데 snap을 통해 설치되나 보네요)
+- [snapcraft](https://snapcraft.io/install/snapcraft/ubuntu)
 
-![ubuntu-remove-slack](../images/ubuntu-remove-slack.png)
+```sh
+sudo apt update
+sudo apt install snapd
 
-- Slack도 [홈페이지에서 직접 다운로드](https://slack.com/intl/en-kr/downloads/linux)하시면 됩니다.
-
-```bash
-# 기존에 snap으로 설치했다면 삭제
-sudo snap remove code
-
-cd /tmp
-# https://code.visualstudio.com/download `.deb` 파일 다운로드
-wget https://az764295.vo.msecnd.net/stable/ea3859d4ba2f3e577a159bc91e3074c5d85c0523/code_1.52.1-1608136922_amd64.deb
-
-# 설치
-sudo dpkg -i code_1.52.1-1608136922_amd64.deb
-
-# 지울 때는
-# sudo dpkg -r code
+## snapcraft 설치
+sudo snap install snapcraft --classic
 ```
 
-## [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)
+```sh
+# telegram
+sudo snap find telegram
+sudo snap install telegram-desktop
 
-IntelliJ IDEA, GoLand를 비롯한 JetBrains 제품들을 손쉽게 관리할 수 있다.
+# Slack
+sudo snap install slack --classic
+
+# Discord
+sudo snap install discord
+
+# Postman
+sudo snap install postman
+```
+
+## Visual Studio Code
+
+```sh
+# sudo snap install code --classic
+# sudo snap remove code
+```
+
+snap으로 설치할 경우 한글이 입력되지 않는다.
+`.deb` 패키지를 다운로드 받아서 설치한다.
+
+```sh
+# https://code.visualstudio.com/download
+mv ~/Downloads/code_1.71.0-1662018389_amd64.deb /tmp
+cd /tmp
+sudo dpkg -i code_1.71.0-1662018389_amd64.deb
+```
+
+## Docker
+
+```sh
+# sudo apt-get remove docker docker-engine docker.io
+# sudo apt-get update
+# sudo apt install docker.io
+```
+
+```sh
+# Update the apt package index and install packages to allow apt to use a repository over HTTPS
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+# Add Docker’s official GPG key
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+# set up the repository
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker Engine
+sudo apt-get update
+# sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+```sh
+# List the versions available in your repo
+apt-cache madison docker-ce
+
+# Install a specific version using the version string from the second column, for example, 5:20.10.16~3-0~ubuntu-jammy
+sudo apt-get install \
+  docker-ce=5:20.10.17~3-0~ubuntu-jammy \
+  docker-ce-cli=5:20.10.17~3-0~ubuntu-jammy \
+  containerd.io \
+  docker-compose-plugin
+```
+
+## JetBrains Toolbox
+
+- [Download](https://www.jetbrains.com/toolbox-app/)
 
 ```bash
 tar xf jetbrains-toolbox-1.21.9712.tar.gz
 cd jetbrains-toolbox-1.21.9712
 
 ./jetbrains-toolbox
+```
+
+```sh
+# dlopen(): error loading libfuse.so.2
+# AppImages require FUSE to run. 
+# You might still be able to extract the contents of this AppImage 
+# if you run it with the --appimage-extract option. 
+# See https://github.com/AppImage/AppImageKit/wiki/FUSE 
+# for more information
+
+# 만약 위와 같은 에러가 발생한다면 아래 명령어를 실행한다.
+sudo apt-get install libfuse2
 ```
 
 ## Eclipse
@@ -361,6 +450,49 @@ Categories=Development;IDE;Java;
 
 '즐겨찾기에 추가'하면 dock에 추가된다.
 
+## 가상 머신 관리 도구 Virtual Box
+
+```sh
+sudo apt install -y virtualbox
+```
+
+## provisioning 도구 Vagrant
+
+- [다운로드](https://www.vagrantup.com/downloads)
+
+```sh
+cd /tmp
+wget https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
+sudo apt install ./vagrant_2.2.14_x86_64.deb
+vagrant --version
+```
+
+## 1Password
+
+### snap
+
+snap으로 설치하면 브라우저와 앱을 연결할 수 없다.
+
+```sh
+# sudo snap install 1password
+```
+
+![1Password detected that it is a sandboxed application](../images/ubuntu22-sandboxed-1password.png)
+
+### deb
+
+```sh
+# https://1password.com/downloads/linux/
+sudo dpkg -i 1password-latest.deb
+```
+
+```sh
+# 에러 발생 시
+sudo apt --fix-broken install
+```
+
+![1Password on Ubuntu 22](../images/ubuntu22-1password.png)
+
 ## NordVPN 설치
 
 - [매뉴얼](https://support.nordvpn.com/Connectivity/Linux/1325531132/Installing-and-using-NordVPN-on-Debian-Ubuntu-Elementary-OS-and-Linux-Mint.htm)
@@ -400,87 +532,3 @@ sudo nordvpn settings
 sudo nordvpn status
 sudo nordvpn rate # Rate your last connection quality (1-5)
 ```
-
-## 블로깅을 위한 hugo 다운로드
-
-```bash
-sudo apt-get install hugo
-```
-
-## 윈도우 앱을 위한 `Wine`
-
-- [홈페이지](https://www.winehq.org/)
-- [설치](https://wine.htmlvalidator.com/install-wine-on-ubuntu-20.04.html)
-
-```bash
-dpkg --print-architecture
-# amd64
-dpkg --print-foreign-architectures
-# i386
-# 만약 "i386"이 출력되지 않는다면 추가해줍니다.
-sudo dpkg --add-architecture i386
-```
-
-```bash
-# cd /tmp
-# wget -nc https://dl.winehq.org/wine-builds/winehq.key
-# sudo apt-key add winehq.key
-# OK
-# sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ focal main'
-# sudo apt update
-# sudo apt install --install-recommends winehq-stable
-```
-
-```bash
-sudo apt install wine
-sudo apt list --installed | less
-sudo apt list --installed | grep -i wine
-apt show wine
-
-wine --version
-# wine-6.0
-```
-
-```bash
-winecfg
-wine
-
-wget https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
-chmod +x winetricks
-./winetricks --optout
-# Install a Windows DLL or component 선택
-```
-
-## 가상 머신 관리 도구 Virtual Box
-
-```bash
-sudo apt install -y virtualbox
-```
-
-## provisioning 도구 Vagrant
-
-- [다운로드](https://www.vagrantup.com/downloads)
-
-```bash
-cd /tmp
-wget https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
-sudo apt install ./vagrant_2.2.14_x86_64.deb
-vagrant --version
-```
-
-## Postman
-
-```bash
-sudo snap install postman
-```
-
-## DBeaver
-
-```bash
-https://dbeaver.io/download/
-```
-
-## [Slack](https://slack.com/intl/en-kr/downloads/linux)
-
-snap이나 Ubuntu Software 앱으로 설치할 경우 한글이 입력되지 않는다.
-공식 홈페이지에서 `.deb`이나 `.rpm` 패키지로 다운로드 받아서 설치한다.
