@@ -159,7 +159,9 @@ scoop install git
 neofetch
 ```
 
-![windows10-neofetch.png](../images/windows10-neofetch.png)
+![Windows 10 neofetch](../images/windows10-neofetch.png)
+
+![Windows 11 neofetch](../images/windows11-neofetch.png)
 
 ## sdkman
 
