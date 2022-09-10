@@ -1,0 +1,27 @@
+---
+- name: 환경 변수 조회
+  command: pwd
+- debug: 
+    msg: "{{ansible_env}}"
+
+- name: MacOSX 패키지 매니저는 homebrew
+  command: pwd
+- debug: 
+    msg: "{{ansible_pkg_mgr}}"
+
+# https://docs.ansible.com/ansible/6/user_guide/playbooks_conditionals.html#ansible-facts-os-family
+- name: OS Family 조회
+  command: echo {{ ansible_facts['os_family'] }}
+  register: os_name
+- debug: var=os_name.stdout_lines
+
+# https://docs.ansible.com/ansible/6/user_guide/playbooks_conditionals.html#ansible-facts-distribution
+- name: OS 배포판 조회
+  command: echo {{ ansible_facts['distribution'] }}
+  register: distribution
+- debug: var=distribution.stdout_lines
+
+- name: IP 조회
+  command: ip -br -c a
+  register: ip
+- debug: var=ip.stdout_lines

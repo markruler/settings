@@ -1,0 +1,10 @@
+---
+- name: Get geerlingguy.dotfiles
+  command: ansible-galaxy install geerlingguy.dotfiles
+  register: geerlingguy
+  changed_when: "'is already installed' not in geerlingguy.stderr"
+  failed_when: "'ERROR' in geerlingguy.stderr"
+
+- name: Include geerlingguy.dotfiles
+  include_role:
+    name: geerlingguy.dotfiles

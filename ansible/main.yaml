@@ -1,0 +1,10 @@
+- hosts: local
+  connection: local
+  # become: yes
+
+  vars_files:
+    - default.config.yml
+
+  tasks:
+    - include_tasks: tasks/{{ansible_facts['os_family']}}.yaml
+    - include_tasks: tasks/dotfiles.yml
