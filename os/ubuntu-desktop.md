@@ -137,11 +137,20 @@ sudo apt-get install -y git vim tmux bash bash-completion
 
 ```sh
 ssh-keygen -t ed25519 -f $HOME/.ssh/github_markruler_ed25519 -C "imcxsu@gmail.com" -N ""
-# ssh -i ${HOME}/.ssh/github_markruler_ed25519 -vT git@github.com
 ```
 
 - [GitHub - SSH and GPG keys](https://github.com/settings/keys)
   - Authentication Keys에 public key 추가
+
+```sh
+ssh -i ${HOME}/.ssh/github_markruler_ed25519 -vT git@github.com
+# Hi markruler! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+```sh
+# git remote set-url origin ${SSH_URL}
+git remote set-url origin git@github.com:markruler/settings.git
+```
 
 ## Oh My Zsh
 
