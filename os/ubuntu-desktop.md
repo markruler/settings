@@ -6,9 +6,8 @@
   - [Background](#background)
   - [Terminal](#terminal)
     - [투명도 설정](#투명도-설정)
-  - [command auto suggestion (not fuzzy suggestion)](#command-auto-suggestion-not-fuzzy-suggestion)
   - [Tools](#tools)
-  - [Git](#git)
+  - [Oh My Zsh](#oh-my-zsh)
   - [SDK Manager](#sdk-manager)
   - [GNOME Shell Extensions](#gnome-shell-extensions)
     - [dash-to-dock](#dash-to-dock)
@@ -16,6 +15,9 @@
   - [Package Manager](#package-manager)
   - [Visual Studio Code](#visual-studio-code)
   - [Docker](#docker)
+    - [자동 설치](#자동-설치)
+    - [수동 설치](#수동-설치)
+    - [특정 버전 설치](#특정-버전-설치)
   - [JetBrains Toolbox](#jetbrains-toolbox)
   - [Eclipse](#eclipse)
   - [가상 머신 관리 도구 Virtual Box](#가상-머신-관리-도구-virtual-box)
@@ -49,6 +51,11 @@ cat ~/.config/user-dirs.dirs
 # XDG_MUSIC_DIR="$HOME/Music"
 # XDG_PICTURES_DIR="$HOME/Pictures"
 # XDG_VIDEOS_DIR="$HOME/Videos"
+```
+
+```bash
+# 다시 한국어로 바꾸고 'Keep old folders'
+export LANG=ko_KR.utf8; xdg-user-dirs-gtk-update
 
 locale
 # LANG=ko_KR.UTF-8
@@ -66,11 +73,6 @@ locale
 # LC_MEASUREMENT="ko_KR.UTF-8"
 # LC_IDENTIFICATION="ko_KR.UTF-8"
 # LC_ALL=
-```
-
-```bash
-# 다시 한국어로
-export LANG=ko_KR.utf8; xdg-user-dirs-gtk-update
 ```
 
 ## 그래픽 카드 드라이버
@@ -124,10 +126,15 @@ watch -d -n 1 nvidia-smi
 
 ![ubuntu-terminal-transparent](../images/ubuntu-terminal-transparent.png)
 
-## command auto suggestion (not fuzzy suggestion)
+## Tools
 
-- zsh: 플러그인 [설치](https://github.com/zsh-users/zsh-autosuggestions)
-  - macOS 처럼 oh-my-zsh를 사용할 수 있습니다.
+```bash
+sudo apt-get install -y git vim tmux bash bash-completion
+```
+
+## Oh My Zsh
+
+- [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
 
 ```bash
 sudo apt-get install zsh
@@ -151,7 +158,7 @@ cat /etc/shells
 # /bin/zsh
 # /usr/bin/zsh
 
-chsh -s /bin/zsh
+chsh -s /usr/bin/zsh
 reboot # 리부팅해야 적용된다.
 ```
 
@@ -172,32 +179,9 @@ grep $USER /etc/passwd
 reboot
 ```
 
-## Tools
-
-- [$HOME/.vimrc](../config/.vimrc)
-
-```bash
-sudo apt-get install vim
-sudo apt-get install tmux
-# sudo apt-get install fish
-sudo apt-get install bash-completion
-```
-
-## Git
-
-```sh
-git config --global user.email "imcxsu@gmail.com"
-git config --global user.name "Changsu Im"
-git config --global core.editor "vim"
-```
-
-- [$HOME/.tmux.conf](../config/.tmux.conf)
-
 ## SDK Manager
 
 - [sdkman](https://sdkman.io/)
-
-bash에서 설치했다면 `~/.bashrc`에 있는 sdkman 설정을 `~/.zshrc`에도 복사해야 합니다.
 
 ```bash
 curl -s "https://get.sdkman.io" | bash
@@ -225,9 +209,9 @@ sdk install java 8.0.292.hs-adpt
 java -version
 ```
 
-## [GNOME Shell Extensions](https://extensions.gnome.org/)
+## GNOME Shell Extensions
 
-- 도움되는 확장 기능
+- [GNOME에 도움되는 확장 기능](https://extensions.gnome.org/)
 
 ### dash-to-dock
 
@@ -253,7 +237,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock hotkeys-show-dock true
 gsettings set org.gnome.shell.extensions.dash-to-dock force-straight-corner false
 ```
 
-- 초기화하기 위해서는 아래 명령어를 사용합니다.
+초기화하기 위해서는 아래 명령어를 사용한다.
 
 ```bash
 dconf reset -f /org/gnome/shell/extensions/dash-to-dock/
@@ -261,24 +245,24 @@ dconf reset -f /org/gnome/shell/extensions/dash-to-dock/
 
 ![ubuntu-bottom-dock](../images/ubuntu-bottom-dock.png)
 
-- dock에 있는 앱들을 `Super`+`숫자` 조합으로 선택할 수 있습니다.
+dock에 있는 앱들을 `Super`+`숫자` 조합으로 선택할 수 있다.
 
 ## Ubuntu login loop
 
-저의 경우 위와 같이 `gsettings`를 건드리면 부팅 시 계정을 생성하는 페이지만 나왔습니다.
-[스택오버플로우](https://askubuntu.com/questions/1277793/ubuntu-20-04-always-forces-me-to-create-a-new-user-at-boot/)에 의하면
-GDM3나 그래픽 드라이버 문제일 수 있습니다. 만약 저와 같은 일이 반복되신다면 아래를 참고해주세요.
+위와 같이 `gsettings`를 수정하면 부팅 시 계정을 생성하는 페이지만 나오는 경우가 있다.
+GDM3나 그래픽 드라이버 문제일 수 있다.
 
-- 우선 계정 생성 페이지에서는 터미널을 열 수 없기 때문에: `Ctrl`+`Alt`+`t`
-- 다른 가상 터미널(Virtual Terminal)에 접근합니다: `Ctrl`+`Alt`+`f1-f6` or `Alt`+`left|right`
+- [참조: 스택오버플로우](https://askubuntu.com/questions/1277793/ubuntu-20-04-always-forces-me-to-create-a-new-user-at-boot/)
+- 우선 계정 생성 페이지에서는 터미널을 열 수 없기 때문에 `Ctrl`+`Alt`+`t`
+- 다른 가상 터미널(Virtual Terminal)에 접근한다. `Ctrl`+`Alt`+`f1-f6` or `Alt`+`left|right`
 
 ```bash
 sudo vi /etc/xdg/autostart/gnome-initial-setup-first-login.desktop
-# 아래와 같은 라인을 주석 처리합니다.
+# 아래와 같은 라인을 주석 처리한다.
 Exec=/usr/libexec/gnome-initial-setup --existing-user
 ```
 
-- 확실히 하기 위해 패키지까지 제거 후 gdm3 구성 정보를 추가합니다.
+확실히 하기 위해 패키지까지 제거한 후 gdm3 구성 정보를 추가한다.
 
 ```bash
 sudo apt remove gnome-initial-setup
@@ -328,20 +312,25 @@ sudo snap install postman
 snap으로 설치할 경우 한글이 입력되지 않는다.
 `.deb` 패키지를 다운로드 받아서 설치한다.
 
+- [Download Visual Studio Code](https://code.visualstudio.com/download)
+
 ```sh
-# https://code.visualstudio.com/download
-mv ~/Downloads/code_1.71.0-1662018389_amd64.deb /tmp
+mv ~/Downloads/code_${VERSION}_amd64.deb /tmp
 cd /tmp
-sudo dpkg -i code_1.71.0-1662018389_amd64.deb
+sudo dpkg -i code_${VERSION}_amd64.deb
 ```
 
 ## Docker
 
+### 자동 설치
+
 ```sh
-# sudo apt-get remove docker docker-engine docker.io
-# sudo apt-get update
-# sudo apt install docker.io
+sudo apt-get remove docker docker-engine docker.io
+sudo apt-get update
+sudo apt install docker.io
 ```
+
+### 수동 설치
 
 ```sh
 # Update the apt package index and install packages to allow apt to use a repository over HTTPS
@@ -363,8 +352,10 @@ echo \
 
 # Install Docker Engine
 sudo apt-get update
-# sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
+
+### 특정 버전 설치
 
 ```sh
 # List the versions available in your repo
