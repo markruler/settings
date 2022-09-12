@@ -19,10 +19,10 @@
     - [자동 설치](#자동-설치)
     - [수동 설치](#수동-설치)
     - [특정 버전 설치](#특정-버전-설치)
+  - [Virtual Box](#virtual-box)
+  - [Vagrant](#vagrant)
   - [JetBrains Toolbox](#jetbrains-toolbox)
   - [Eclipse](#eclipse)
-  - [가상 머신 관리 도구 Virtual Box](#가상-머신-관리-도구-virtual-box)
-  - [provisioning 도구 Vagrant](#provisioning-도구-vagrant)
   - [1Password](#1password)
     - [snap](#snap)
     - [deb](#deb)
@@ -380,6 +380,29 @@ sudo apt-get install \
   docker-compose-plugin
 ```
 
+## Virtual Box
+
+VM Provider
+
+```sh
+sudo apt install -y virtualbox
+```
+
+## Vagrant
+
+VM provisioning tool
+
+- [다운로드](https://www.vagrantup.com/downloads)
+
+```sh
+cd /tmp
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update
+sudo apt install vagrant
+vagrant --version
+```
+
 ## JetBrains Toolbox
 
 - [Download](https://www.jetbrains.com/toolbox-app/)
@@ -451,23 +474,6 @@ Categories=Development;IDE;Java;
 ![ubuntu-eclipse-to-dock](../images/ubuntu-eclipse-to-dock.png)
 
 '즐겨찾기에 추가'하면 dock에 추가된다.
-
-## 가상 머신 관리 도구 Virtual Box
-
-```sh
-sudo apt install -y virtualbox
-```
-
-## provisioning 도구 Vagrant
-
-- [다운로드](https://www.vagrantup.com/downloads)
-
-```sh
-cd /tmp
-wget https://releases.hashicorp.com/vagrant/2.2.14/vagrant_2.2.14_x86_64.deb
-sudo apt install ./vagrant_2.2.14_x86_64.deb
-vagrant --version
-```
 
 ## 1Password
 
