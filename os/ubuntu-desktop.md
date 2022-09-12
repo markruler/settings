@@ -228,24 +228,61 @@ java -version
 
 - [options](https://github.com/micheleg/dash-to-dock/blob/master/schemas/org.gnome.shell.extensions.dash-to-dock.gschema.xml)
 
-```bash
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+```sh
 gsettings set org.gnome.shell.extensions.dash-to-dock animation-time 0.2
-gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED # 투명도 모드
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide-in-fullscreen true
 gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.6 # 배경 투명도
-gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style DASHES # 실행 중인 앱 표시 형태
-gsettings set org.gnome.shell.extensions.dash-to-dock intellihide-mode FOCUS_APPLICATION_WINDOWS
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32 # 범위: 16-64
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 48 # 범위: 16-64 (FHD: 32, QHD: 48, 4K: 64 추천)
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false # 화면에 아이콘이 꽉 차지 않을 때 여백을 두지 않음
-gsettings set org.gnome.shell.extensions.dash-to-dock show-windows-preview true
-gsettings set org.gnome.shell.extensions.dash-to-dock show-favorites true
-gsettings set org.gnome.shell.extensions.dash-to-dock show-trash true
-gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts true
+gsettings set org.gnome.shell.extensions.dash-to-dock force-straight-corner false
+gsettings set org.gnome.shell.extensions.dash-to-dock hotkeys-show-dock true
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide-mode FOCUS_APPLICATION_WINDOWS
 gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true # 모니터가 여러 개일 때 어느 모니터에서든 dock을 볼 수 있음
 gsettings set org.gnome.shell.extensions.dash-to-dock scroll-action cycle-windows # 아이콘 위에서 마우스 스크롤하면 여러 윈도우를 이동할 수 있음
+gsettings set org.gnome.shell.extensions.dash-to-dock show-favorites true
+gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts true
+gsettings set org.gnome.shell.extensions.dash-to-dock show-trash true
+gsettings set org.gnome.shell.extensions.dash-to-dock show-windows-preview true
+gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED # 투명도 모드
+gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style DASHES # 실행 중인 앱 표시 형태
+```
+
+dock을 자동으로 숨기고 싶다면 아래 설정을 적용한다.
+
+```sh
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide-in-fullscreen true
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true
+```
+
+반대로 고정하고 싶다면 아래 설정을 적용한다.
+
+```sh
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide-in-fullscreen false
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
+```
+
+hot-key가 비활성화 상태라면 바꾼다.
+
+```sh
 gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys true # `super`+`num`
-gsettings set org.gnome.shell.extensions.dash-to-dock hotkeys-show-dock true
-gsettings set org.gnome.shell.extensions.dash-to-dock force-straight-corner false
+gsettings list-recursively org.gnome.shell.extensions.dash-to-dock | grep app-hotkey
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-1 ['<Super>2']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-10 ['<Super>0']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-2 ['<Super>2']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-3 ['<Super>3']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-4 ['<Super>4']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-5 ['<Super>5']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-6 ['<Super>6']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-7 ['<Super>7']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-8 ['<Super>8']
+# org.gnome.shell.extensions.dash-to-dock app-hotkey-9 ['<Super>9']
 ```
 
 초기화하기 위해서는 아래 명령어를 사용한다.
