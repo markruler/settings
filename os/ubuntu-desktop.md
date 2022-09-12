@@ -7,6 +7,7 @@
   - [Terminal](#terminal)
     - [투명도 설정](#투명도-설정)
   - [Tools](#tools)
+  - [GitHub SSH Key 등록](#github-ssh-key-등록)
   - [Oh My Zsh](#oh-my-zsh)
   - [SDK Manager](#sdk-manager)
   - [GNOME Shell Extensions](#gnome-shell-extensions)
@@ -131,6 +132,16 @@ watch -d -n 1 nvidia-smi
 ```bash
 sudo apt-get install -y git vim tmux bash bash-completion
 ```
+
+## GitHub SSH Key 등록
+
+```sh
+ssh-keygen -t ed25519 -f $HOME/.ssh/github_markruler_ed25519 -C "imcxsu@gmail.com" -N ""
+# ssh -i ${HOME}/.ssh/github_markruler_ed25519 -vT git@github.com
+```
+
+- [GitHub - SSH and GPG keys](https://github.com/settings/keys)
+  - Authentication Keys에 public key 추가
 
 ## Oh My Zsh
 
