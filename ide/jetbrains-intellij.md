@@ -23,6 +23,7 @@
     - [IDE 메모리 사용량 확인하고 늘리기](#ide-메모리-사용량-확인하고-늘리기)
     - [SDK 소스 파일 연결](#sdk-소스-파일-연결)
     - [Linux의 경우 Dock에 아이콘을 추가하려면](#linux의-경우-dock에-아이콘을-추가하려면)
+    - [Commit 윈도우가 보이지 않을 경우](#commit-윈도우가-보이지-않을-경우)
   - [플러그인](#플러그인)
     - [Optional](#optional)
 
@@ -207,6 +208,12 @@ Sourcepath는 src.zip을 선택한다.
 ### Linux의 경우 Dock에 아이콘을 추가하려면
 
 > Tools > Create Desktop Entry
+
+### Commit 윈도우가 보이지 않을 경우
+
+> Settings > Version Control > Commit
+
+- [x] Use non-modal commit interface
 
 ## 플러그인
 
