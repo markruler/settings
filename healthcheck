@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# cp healthcheck /usr/local/bin/healthcheck
+while ! curl --silent --output /dev/null --head --fail --max-time 3 --location --request OPTIONS ${1}; do
+  echo "Healthchecking...${1}"
+  sleep 2
+done
