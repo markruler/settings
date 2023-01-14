@@ -146,6 +146,7 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 - [chocolatey/choco](https://github.com/chocolatey/choco)
 
 ```powershell
+# Run as administrator
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
 
@@ -168,13 +169,13 @@ neofetch
 - [Download](https://sdkman.io/)
 
 ```bash
-# sdkman이 의존하는 zip 설치
-scoop search zip
-scoop install zip
+wsl
+sudo apt install zip
 
 # sdkman 설치
 curl -s "https://get.sdkman.io" | bash
-source "/c/Users/imcxs/.sdkman/bin/sdkman-init.sh"
+# source "/mnt/c/Users/imcxs/.sdkman/bin/sdkman-init.sh"
+source "/home/markruler/.sdkman/bin/sdkman-init.sh"
 ```
 
 ```bash
@@ -189,6 +190,7 @@ sdk list
 # sdk list [package]
 sdk install maven 3.6.3
 sdk install gradle 6.8.3
+# sdk install java 8.0.352-zulu
 sdk install java 11.0.11.hs-adpt
 ```
 
