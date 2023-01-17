@@ -1,14 +1,16 @@
 # Ubuntu Desktop
 
 - [Ubuntu Desktop](#ubuntu-desktop)
+  - [root 비밀번호 설정](#root-비밀번호-설정)
   - [locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기](#locale은-한국으로-유지한-채-홈-디렉토리-명만-영어로-바꾸기)
+    - [English 설치 후 Korean 설정 추가](#english-설치-후-korean-설정-추가)
   - [그래픽 카드 드라이버](#그래픽-카드-드라이버)
   - [Background](#background)
   - [Terminal](#terminal)
     - [투명도 설정](#투명도-설정)
   - [Tools](#tools)
-  - [GitHub SSH Key 등록](#github-ssh-key-등록)
   - [Oh My Zsh](#oh-my-zsh)
+  - [GitHub SSH Key 등록](#github-ssh-key-등록)
   - [SDK Manager](#sdk-manager)
   - [GNOME Shell Extensions](#gnome-shell-extensions)
     - [dash-to-dock](#dash-to-dock)
@@ -31,6 +33,19 @@
 ```bash
 cat /etc/debian_version
 # bullseye/sid
+```
+
+## root 비밀번호 설정
+
+```sh
+sudo -i
+```
+
+```sh
+root> passwd
+# New password: 
+# Retype new password: 
+# passwd: password updated successfully
 ```
 
 ## locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기
@@ -75,6 +90,26 @@ locale
 # LC_IDENTIFICATION="ko_KR.UTF-8"
 # LC_ALL=
 ```
+
+### English 설치 후 Korean 설정 추가
+
+- [참고](https://osg.kr/archives/913)
+
+> Language Support > Install/Remove Languages > Korean
+
+Applying changes
+
+> Region & Language > Input sources
+
+- [x] Korean (Hangul)
+- [ ] Korean
+- [ ] Korean (101/104 key compatible)
+
+```sh
+ibus-setup-hangul
+```
+
+- [x] Start in Hangul mode
 
 ## 그래픽 카드 드라이버
 
@@ -129,27 +164,15 @@ watch -d -n 1 nvidia-smi
 
 ## Tools
 
-```bash
+```sh
 sudo apt-get install -y git vim tmux bash bash-completion
-```
-
-## GitHub SSH Key 등록
-
-```sh
-ssh-keygen -t ed25519 -f $HOME/.ssh/github_markruler_ed25519 -C "imcxsu@gmail.com" -N ""
-```
-
-- [GitHub - SSH and GPG keys](https://github.com/settings/keys)
-  - Authentication Keys에 public key 추가
-
-```sh
-ssh -i ${HOME}/.ssh/github_markruler_ed25519 -vT git@github.com
-# Hi markruler! You've successfully authenticated, but GitHub does not provide shell access.
+sudo snap install curl
 ```
 
 ```sh
-# git remote set-url origin ${SSH_URL}
-git remote set-url origin git@github.com:markruler/settings.git
+git config --global user.email "imcxsu@gmail.com"
+git config --global user.name "Changsu Im"
+git config --global core.editor vim
 ```
 
 ## Oh My Zsh
@@ -197,6 +220,33 @@ grep $USER /etc/passwd
 # markruler:x:1000:1000:markruler,,,:/home/markruler:/bin/bash
 
 reboot
+```
+
+## GitHub SSH Key 등록
+
+```sh
+ssh-keygen -t ed25519 -f $HOME/.ssh/github_ed25519 -C "comment" -N ""
+```
+
+- [GitHub - SSH and GPG keys](https://github.com/settings/keys)
+  - Authentication Keys에 public key 추가
+
+```sh
+# ~/.ssh/config
+Host github.com
+  IdentityFile ~/.ssh/github_ed25519
+  User git
+
+Host bitbucket.org
+  IdentityFile ~/.ssh/bitbucket_ed25519
+  User git
+
+Host tost
+  HostName 192.168.0.219
+    HostKeyAlgorithms=+ssh-rsa,ssh-dss
+    Port=22
+    User markruler
+    LogLevel VERBOSE
 ```
 
 ## SDK Manager
