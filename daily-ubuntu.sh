@@ -14,7 +14,7 @@ trap - SIGINT SIGTERM ERR EXIT
 # APT
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get autoremove
+sudo apt-get autoremove -y
 
 ## Snapcraft
 sudo snap refresh

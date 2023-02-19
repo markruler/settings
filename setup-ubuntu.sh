@@ -13,7 +13,7 @@ cat /etc/debian_version
 
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get autoremove
+sudo apt-get autoremove -y
 sudo snap refresh
 
 sudo apt-get install -y git tree tmux bash bash-completion
