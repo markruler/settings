@@ -25,7 +25,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 source $HOME/.zshrc
 chsh -s /usr/bin/zsh
 
-echo "alias ll='ls -halF'" >> ~/.zshrc
+echo "alias ll='ls -haltrF'" >> ~/.zshrc
 
 # VIM
 sudo apt-get install vim
