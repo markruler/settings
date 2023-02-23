@@ -35,16 +35,6 @@ sudo snap refresh
 sudo apt-get install -y git tree tmux bash bash-completion zip unzip
 sudo snap install curl
 
-# ZSH
-sudo apt-get install -y zsh
-
-# # oh-my-zsh
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# source $HOME/.zshrc
-sudo chsh -s /usr/bin/zsh
-
-echo "alias ll='ls -haltrF'" >> ~/.zshrc
-
 # VIM
 sudo apt-get install -y vim
 AMIX_VIMRC="$HOME/.vim_runtime"
@@ -124,3 +114,13 @@ else
     gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style DASHES # 실행 중인 앱 표시 형태
   fi
 fi
+
+
+# ZSH
+sudo apt-get install -y zsh
+echo "alias ll='ls -haltrF'" >> ~/.zshrc
+
+# # oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# source $HOME/.zshrc
+sudo chsh -s /usr/bin/zsh
