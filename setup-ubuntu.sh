@@ -16,24 +16,45 @@ sudo apt-get upgrade -y
 sudo apt-get autoremove -y
 sudo snap refresh
 
-sudo apt-get install -y git tree tmux bash bash-completion
+# Running kernel seems to be up-to-date.
+# Restarting services...
+# Daemons using outdated libraries
+# --------------------------------
+#   1. iscsid.service            5. systemd-manager            9. systemd-udevd.service         13. none of the above
+#   2. ssh.service               6. systemd-networkd.service   10. udisks2.service
+#   3. systemd-journald.service  7. systemd-resolved.service   11. unattended-upgrades.service
+#   4. systemd-logind.service    8. systemd-timesyncd.service  12. user@1001.service
+# (Enter the items or ranges you want to select, separated by spaces.)
+# Which services should be restarted? 1 2 3 4 5
+# Which services should be restarted? 6 7 8 9 10
+# Which services should be restarted? 11 12 13
+
+sudo apt-get install -y git tree tmux bash bash-completion zip unzip
 sudo snap install curl
 
 # ZSH
-sudo apt-get install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-source $HOME/.zshrc
-chsh -s /usr/bin/zsh
+sudo apt-get install -y zsh
+
+# # oh-my-zsh
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# source $HOME/.zshrc
+sudo chsh -s /usr/bin/zsh
 
 echo "alias ll='ls -haltrF'" >> ~/.zshrc
 
 # VIM
-sudo apt-get install vim
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sudo apt-get install -y vim
+AMIX_VIMRC="$HOME/.vim_runtime"
+if [ ! -d "$AMIX_VIMRC" ] ; then
+  git clone --depth=1 https://github.com/amix/vimrc.git "$AMIX_VIMRC"
+fi
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 # FZF
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+FZF_HOME="$HOME/.fzf"
+if [ ! -d "$FZF_HOME" ] ; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git "$FZF_HOME"
+fi
 ~/.fzf/install --all
 
 # SSH
@@ -49,8 +70,9 @@ Host bitbucket.org
   IdentityFile ~/.ssh/bitbucket_ed25519
   User git
 
+# example host
 Host tost
-  HostName 192.168.0.219
+  HostName 192.168.0.2
     HostKeyAlgorithms=+ssh-rsa,ssh-dss
     Port=22
     User markruler
@@ -89,4 +111,3 @@ gsettings set org.gnome.shell.extensions.dash-to-dock show-trash true
 gsettings set org.gnome.shell.extensions.dash-to-dock show-windows-preview true
 gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED # 투명도 모드
 gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-style DASHES # 실행 중인 앱 표시 형태
-
