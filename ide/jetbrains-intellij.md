@@ -1,6 +1,7 @@
 # JetBrains의 IntelliJ IDEA
 
 - [JetBrains의 IntelliJ IDEA](#jetbrains의-intellij-idea)
+  - [Toolbox](#toolbox)
   - [자주 쓰는 단축키 (default keymap 기준)](#자주-쓰는-단축키-default-keymap-기준)
     - [슈퍼파워](#슈퍼파워)
     - [이동 (Navigate)](#이동-navigate)
@@ -26,6 +27,15 @@
     - [Commit 윈도우가 보이지 않을 경우](#commit-윈도우가-보이지-않을-경우)
   - [플러그인](#플러그인)
     - [Optional](#optional)
+
+## Toolbox
+
+```sh
+# .zshrc
+# Toolbox > Settings > Tools > Shell script location
+# https://www.jetbrains.com/help/idea/working-with-the-ide-features-from-command-line.html#toolbox
+PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts
+```
 
 ## 자주 쓰는 단축키 (default keymap 기준)
 
