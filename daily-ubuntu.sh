@@ -24,3 +24,6 @@ sudo apt-get autoremove -y
 ## Snapcraft
 echo -e "\n🚩 Snap refresh"
 sudo snap refresh
+
+echo -e "\n🚩 SDKMAN update"
+sdk update
