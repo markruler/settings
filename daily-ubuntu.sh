@@ -25,5 +25,5 @@ sudo apt-get autoremove -y
 echo -e "\n🚩 Snap refresh"
 sudo snap refresh
 
-echo -e "\n🚩 SDKMAN update"
-sdk update
+#echo -e "\n🚩 SDKMAN update"
+#sdk update
