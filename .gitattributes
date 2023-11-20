@@ -1,6 +1,11 @@
 # https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
 # * text eol=lf
 
+# Windows
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
 .gitattributes text eol=lf
 *.md text eol=lf
 *.html text eol=lf
@@ -14,6 +19,7 @@
 *.java text eol=lf
 
 *.txt text eol=lf
+*.json text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
 *.conf text eol=lf
@@ -21,9 +27,3 @@
 
 *.png binary
 *.jpg binary
-
-# Windows
-*.cmd text eol=crlf
-*.bat text eol=crlf
-*.ps1 text eol=crlf
-

@@ -3,7 +3,7 @@
   "explorer.compactFolders": false,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.enablePreview": false,
-  "workbench.editor.showTabs": true,
+  "workbench.editor.showTabs": "multiple",
   "workbench.colorCustomizations": {
     "minimap.background": "#00000035"
   },
