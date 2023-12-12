@@ -160,7 +160,13 @@ Editor > File Encoding: `UTF-8`
 
 ### 자동으로 코드가 접히는 것 해제
 
-Editor > Gerenal > Code Folding > Show code folding outline 체크해제
+Editor > Gerenal > Code Folding
+
+- [ ] Show code folding outline
+- [ ] Show code folding arrows
+- [ ] Imports
+- Java
+  - [ ] One-line methods
 
 ### 주석했을 때 맨 앞에 `//`가 들어가는 경우
 
@@ -254,4 +260,6 @@ Sourcepath는 src.zip을 선택한다.
 - [Maven Helper](https://plugins.jetbrains.com/plugin/7179-maven-helper)
 - [File Watchers](https://plugins.jetbrains.com/plugin/7177-file-watchers): 파일 수정 시 빌드 트리거
 - [Indent Rainbow](https://plugins.jetbrains.com/plugin/13308-indent-rainbow): 들여 쓴 부분을 색으로 구분
+  - Other Settings > Indent Rainbow > Advanced Settings
+    - [ ] Highlight empty lines
 - [Rainbow Brackets](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets): 중괄호(`{`, `}`)쌍을 다양한 색으로 구분
