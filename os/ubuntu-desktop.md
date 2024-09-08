@@ -2,6 +2,7 @@
 
 - [Ubuntu Desktop](#ubuntu-desktop)
   - [root 비밀번호 설정](#root-비밀번호-설정)
+  - [Nautilus](#nautilus)
   - [locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기](#locale은-한국으로-유지한-채-홈-디렉토리-명만-영어로-바꾸기)
     - [English 설치 후 Korean 설정 추가](#english-설치-후-korean-설정-추가)
   - [그래픽 카드 드라이버](#그래픽-카드-드라이버)
@@ -46,6 +47,15 @@ root> passwd
 # New password: 
 # Retype new password: 
 # passwd: password updated successfully
+```
+
+## Nautilus
+
+- Ubuntu의 기본 파일 관리자
+- 가끔 GNOME UI 세팅하다보면 사라질 때가 있는데(...) 다시 설치해주면 된다.
+
+```sh
+sudo apt-get install nautilus
 ```
 
 ## locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기
