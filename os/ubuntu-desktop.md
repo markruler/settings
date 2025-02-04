@@ -30,6 +30,10 @@
     - [snap](#snap)
     - [deb](#deb)
   - [NordVPN 설치](#nordvpn-설치)
+  - [Dropbox](#dropbox)
+    - [Dropbox Headless](#dropbox-headless)
+    - [Usages](#usages)
+  - [Cursor AI](#cursor-ai)
 
 ```bash
 cat /etc/debian_version
@@ -645,4 +649,51 @@ sudo nordvpn settings
 
 sudo nordvpn status
 sudo nordvpn rate # Rate your last connection quality (1-5)
+```
+
+## Dropbox
+
+- [Download](https://www.dropbox.com/install-linux)
+
+```sh
+# Ubuntu 18.04 ~ 22.04
+sudo dpkg -i dropbox_2020.03.04_amd64.deb
+# Ubuntu 22.10+
+sudo dpkg -i dropbox_2024.04.17_amd64.deb
+```
+
+### Dropbox Headless
+
+```sh
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+~/.dropbox-dist/dropboxd
+```
+
+```sh
+dropbox filestatus ~/Dropbox
+```
+
+### Usages
+
+```sh
+dropbox status
+dropbox start
+dropbox autostart y
+# dropbox stop
+dropbox filestatus ~/Dropbox
+dropbox exclude list
+dropbox exclude add ebook
+```
+
+## Cursor AI
+
+- [simple](https://gist.github.com/evgenyneu/5c5c37ca68886bf1bea38026f60603b6)
+- [script](https://gist.github.com/Kinyugo/9845e18998744ff54b8f0cde3bb37182)
+
+```sh
+curl https://gist.githubusercontent.com/Kinyugo/9845e18998744ff54b8f0cde3bb37182/raw/a9425582958c14f80acea08e51c49b1bf63840c7/install_cursor.sh | sh
+```
+
+```sh
+cursor
 ```
