@@ -1,34 +1,8 @@
-# https://github.com/markruler/settings
-# https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
-# * text eol=lf
+* text eol=lf
+
+*.pdf binary
 
 # Windows
 *.cmd text eol=crlf
 *.bat text eol=crlf
 *.ps1 text eol=crlf
-
-.gitattributes text eol=lf
-.gitignore text eol=lf
-LICENSE text eol=lf
-
-*.md text eol=lf
-*.html text eol=lf
-*.css text eol=lf
-*.xml text eol=lf
-
-*.sh text eol=lf
-*.c text eol=lf
-*.py text eol=lf
-*.js text eol=lf
-*.java text eol=lf
-
-*.txt text eol=lf
-*.json text eol=lf
-*.yml text eol=lf
-*.yaml text eol=lf
-*.toml text eol=lf
-*.conf text eol=lf
-*.ini text eol=lf
-
-*.png binary
-*.jpg binary
