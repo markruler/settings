@@ -1,0 +1,6 @@
+{
+  "markdownlint.config": {
+    "line-length": false,
+    "required-headings": false
+  },
+}

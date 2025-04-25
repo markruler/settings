@@ -1,44 +1,80 @@
-# Ubuntu Desktop
+# Ubuntu
 
-- [Ubuntu Desktop](#ubuntu-desktop)
+- [Ubuntu](#ubuntu)
+  - [check version](#check-version)
+  - [Tools](#tools)
+    - [Firewall](#firewall)
+  - [Ansible](#ansible)
   - [root 비밀번호 설정](#root-비밀번호-설정)
   - [Nautilus](#nautilus)
   - [locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기](#locale은-한국으로-유지한-채-홈-디렉토리-명만-영어로-바꾸기)
     - [English 설치 후 Korean 설정 추가](#english-설치-후-korean-설정-추가)
-  - [그래픽 카드 드라이버](#그래픽-카드-드라이버)
-  - [Background](#background)
+  - [NVIDIA drivers installation](#nvidia-drivers-installation)
   - [Terminal](#terminal)
     - [투명도 설정](#투명도-설정)
-  - [Tools](#tools)
   - [Oh My Zsh](#oh-my-zsh)
   - [GitHub SSH Key 등록](#github-ssh-key-등록)
-  - [SDK Manager](#sdk-manager)
   - [GNOME Shell Extensions](#gnome-shell-extensions)
     - [dash-to-dock](#dash-to-dock)
   - [Ubuntu login loop](#ubuntu-login-loop)
-  - [Package Manager](#package-manager)
-  - [Visual Studio Code](#visual-studio-code)
+  - [Snapcraft: Package Manager](#snapcraft-package-manager)
   - [Docker](#docker)
-    - [자동 설치](#자동-설치)
-    - [수동 설치](#수동-설치)
-    - [특정 버전 설치](#특정-버전-설치)
-  - [Virtual Box](#virtual-box)
-  - [Vagrant](#vagrant)
-  - [JetBrains Toolbox](#jetbrains-toolbox)
-  - [Eclipse](#eclipse)
   - [1Password](#1password)
-    - [snap](#snap)
-    - [deb](#deb)
-  - [NordVPN 설치](#nordvpn-설치)
   - [Dropbox](#dropbox)
     - [Dropbox Headless](#dropbox-headless)
     - [Usages](#usages)
+  - [Flameshot (Screenshot Tool)](#flameshot-screenshot-tool)
   - [Cursor AI](#cursor-ai)
+  - [NordVPN 설치](#nordvpn-설치)
+  - [Visual Studio Code](#visual-studio-code)
+  - [JetBrains Toolbox](#jetbrains-toolbox)
 
-```bash
+## check version
+
+```sh
 cat /etc/debian_version
 # bullseye/sid
+
+cat /etc/*release
+# DISTRIB_DESCRIPTION="Ubuntu 24.10"
 ```
+
+## Tools
+
+```sh
+sudo apt update
+sudo apt upgrade
+```
+
+```sh
+sudo apt install libfuse2 gnupg2 git vim tmux bash bash-completion
+sudo snap install curl
+```
+
+- [libfuse2](https://github.com/AppImage/AppImageKit/wiki/FUSE) for AppImage
+- [gnupg2](https://gnupg.org/) for GPG (git, 1password, etc.)
+
+```sh
+git config --global user.email "imcxsu@gmail.com"
+git config --global user.name "Changsu Im"
+git config --global core.editor vim
+```
+
+### Firewall
+
+```sh
+sudo apt install firewalld
+# ipset iptables libip4tc2 libip6tc2 nftables
+```
+
+```sh
+# 일반 애플리케이션이 실행되지 않는 경우 (Permission Denied)
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+```
+
+## Ansible
+
+- [ansible setup](https://github.com/xpdojo/ansible/tree/study/setup/ubuntu)
 
 ## root 비밀번호 설정
 
@@ -64,7 +100,7 @@ sudo apt-get install nautilus
 
 ## locale은 한국으로 유지한 채 홈 디렉토리 명만 영어로 바꾸기
 
-```bash
+```sh
 export LANG=C; xdg-user-dirs-gtk-update
 
 ls $HOME
@@ -83,7 +119,7 @@ cat ~/.config/user-dirs.dirs
 # XDG_VIDEOS_DIR="$HOME/Videos"
 ```
 
-```bash
+```sh
 # 다시 한국어로 바꾸고 'Keep old folders'
 export LANG=ko_KR.utf8; xdg-user-dirs-gtk-update
 
@@ -107,68 +143,85 @@ locale
 
 ### English 설치 후 Korean 설정 추가
 
-- [참고](https://osg.kr/archives/913)
+```sh
+sudo apt install ibus-hangul
+```
 
-> Language Support > Install/Remove Languages > Korean
+```sh
+ibus resart
+```
 
-Applying changes
-
-> Region & Language > Input sources
-
-- [x] Korean (Hangul)
-- [ ] Korean
-- [ ] Korean (101/104 key compatible)
+- Language Support > Install/Remove Languages
+  - **Korean**
+  - Applying changes
+- Keyboard > Input sources
+  - [ ] English
+  - [x] **Korean (Hangul)**
+  - [ ] Korean
+  - [ ] Korean (101/104 key compatible)
 
 ```sh
 ibus-setup-hangul
 ```
 
-- [x] Start in Hangul mode
+- Hangul Toggle Key
+  - **Hangul**
+  - **Shift+space**
 
-## 그래픽 카드 드라이버
+- [Ubuntu 22.04 한글 입력기 3가지 설정 방법(ibus, uim, fcitx)](https://osg.kr/archives/913)
 
-```bash
+## NVIDIA drivers installation
+
+- 설치하지 않으면 듀얼 모니터가 정상적으로 출력되지 않음.
+- [install nvidia drivers](https://documentation.ubuntu.com/server/how-to/graphics/install-nvidia-drivers/index.html) | Ubuntu Docs
+
+```sh
+sudo ubuntu-drivers list --gpgpu
+# nvidia-driver-535-server, (kernel modules provided by linux-modules-nvidia-535-server-generic)
+# nvidia-driver-570-server, (kernel modules provided by linux-modules-nvidia-570-server-generic)
+# nvidia-driver-560, (kernel modules provided by linux-modules-nvidia-560-generic)
+```
+
+```sh
+sudo ubuntu-drivers install
+```
+
+```sh
+nvidia-smi -L
+# GPU 0: NVIDIA GeForce GTX 1050 Ti (UUID: GPU-04922b12-e910-a747-8a82-8d4f4ced04af)
+```
+
+```sh
 nvidia-detector
-# nvidia-driver-460
-sudo lshw -C display
-# *-display
+# nvidia-driver-570
 ```
 
-```bash
-sudo apt install -y nvidia-driver-460
-sudo apt install -y nvidia-utils-460
-reboot
+```sh
+nvidia-smi
 ```
 
-```bash
-watch -d -n 1 nvidia-smi
-
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  GeForce GTX 1660    Off  | 00000000:09:00.0  On |                  N/A |
-| 46%   31C    P8     8W / 130W |    215MiB /  5936MiB |      3%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|    0   N/A  N/A       999      G   /usr/lib/xorg/Xorg                 53MiB |
-|    0   N/A  N/A      2178      G   /usr/lib/xorg/Xorg                 96MiB |
-|    0   N/A  N/A      2477      G   /usr/bin/gnome-shell               54MiB |
-+-----------------------------------------------------------------------------+
+```sh
+Fri Apr 25 12:44:16 2025
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce GTX 1050 Ti     Off |   00000000:01:00.0  On |                  N/A |
+| 30%   29C    P8             N/A /   75W |      45MiB /   4096MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      2460      G   /usr/bin/gnome-shell                           41MiB |
++-----------------------------------------------------------------------------------------+
 ```
-
-## Background
-
-- [Unsplash](https://unsplash.com/photos/k5Vj3gx4vHE)
 
 ## Terminal
 
@@ -176,32 +229,28 @@ watch -d -n 1 nvidia-smi
 
 ![ubuntu-terminal-transparent](../images/ubuntu-terminal-transparent.png)
 
-## Tools
-
-```sh
-sudo apt-get install -y git vim tmux bash bash-completion
-sudo snap install curl
-```
-
-```sh
-git config --global user.email "imcxsu@gmail.com"
-git config --global user.name "Changsu Im"
-git config --global core.editor vim
-```
-
 ## Oh My Zsh
 
 - [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
 
-```bash
+```sh
 sudo apt-get install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+```sh
 # $HOME/.zshrc
 ZSH_THEME="gozilla"
+```
 
+```sh
 source $HOME/.zshrc
+```
 
+```sh
 cat /etc/shells
 # /bin/sh
 # /bin/bash
@@ -214,84 +263,43 @@ cat /etc/shells
 # /usr/bin/fish
 # /bin/zsh
 # /usr/bin/zsh
+```
 
+```sh
 chsh -s /usr/bin/zsh
-reboot # 리부팅해야 적용된다.
+```
+
+```sh
+# 리부팅해야 적용된다.
+reboot
 ```
 
 root 계정만 `fish`를 사용하고 일반 사용자 계정은 `bash`를 사용할 수도 있다.
 
-```bash
+```sh
 echo $SHELL
 # /bin/bash
 # chsh --shell /usr/bin/fish
+```
 
+```sh
 grep $USER /etc/passwd
 # markruler:x:1000:1000:markruler,,,:/home/markruler:/usr/bin/fish
+```
 
+```sh
 sudo usermod --shell /bin/bash $USER
 grep $USER /etc/passwd
 # markruler:x:1000:1000:markruler,,,:/home/markruler:/bin/bash
+```
 
+```sh
 reboot
 ```
 
 ## GitHub SSH Key 등록
 
-```sh
-ssh-keygen -t ed25519 -f $HOME/.ssh/github_ed25519 -C "comment" -N ""
-```
-
-- [GitHub - SSH and GPG keys](https://github.com/settings/keys)
-  - Authentication Keys에 public key 추가
-
-```sh
-# ~/.ssh/config
-Host github.com
-  IdentityFile ~/.ssh/github_ed25519
-  User git
-
-Host bitbucket.org
-  IdentityFile ~/.ssh/bitbucket_ed25519
-  User git
-
-Host tost
-  HostName 192.168.0.219
-    HostKeyAlgorithms=+ssh-rsa,ssh-dss
-    Port=22
-    User markruler
-    LogLevel VERBOSE
-```
-
-## SDK Manager
-
-- [sdkman](https://sdkman.io/)
-
-```bash
-curl -s "https://get.sdkman.io" | bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-```
-
-```bash
-sdk version
-> SDKMAN 5.11.2+698
-```
-
-```bash
-sdk list
-# [gradle, maven, java, ...]
-
-# sdk list [package]
-sdk install maven 3.6.3
-sdk install gradle 6.8.3
-
-sdk list java
-sdk install java 11.0.11.hs-adpt
-java --version
-
-sdk install java 8.0.292.hs-adpt
-java -version
-```
+- [일상에서의 SSH](https://markruler.github.io/posts/network/ssh/)
 
 ## GNOME Shell Extensions
 
@@ -360,7 +368,7 @@ gsettings list-recursively org.gnome.shell.extensions.dash-to-dock | grep app-ho
 
 초기화하기 위해서는 아래 명령어를 사용한다.
 
-```bash
+```sh
 dconf reset -f /org/gnome/shell/extensions/dash-to-dock/
 ```
 
@@ -377,7 +385,7 @@ GDM3나 그래픽 드라이버 문제일 수 있다.
 - 우선 계정 생성 페이지에서는 터미널을 열 수 없기 때문에 `Ctrl`+`Alt`+`t`
 - 다른 가상 터미널(Virtual Terminal)에 접근한다. `Ctrl`+`Alt`+`f1-f6` or `Alt`+`left|right`
 
-```bash
+```sh
 sudo vi /etc/xdg/autostart/gnome-initial-setup-first-login.desktop
 # 아래와 같은 라인을 주석 처리한다.
 Exec=/usr/libexec/gnome-initial-setup --existing-user
@@ -385,18 +393,18 @@ Exec=/usr/libexec/gnome-initial-setup --existing-user
 
 확실히 하기 위해 패키지까지 제거한 후 gdm3 구성 정보를 추가한다.
 
-```bash
+```sh
 sudo apt remove gnome-initial-setup
 ```
 
-```bash
+```sh
 vi /etc/gdm3/custom.conf
 
 # [daemon]
 # InitialSetupEnable=False
 ```
 
-## Package Manager
+## Snapcraft: Package Manager
 
 - [snapcraft](https://snapcraft.io/install/snapcraft/ubuntu)
 
@@ -423,232 +431,21 @@ sudo snap install discord
 sudo snap install postman
 ```
 
-## Visual Studio Code
-
-```sh
-# sudo snap install code --classic
-# sudo snap remove code
-```
-
-snap으로 설치할 경우 한글이 입력되지 않는다.
-`.deb` 패키지를 다운로드 받아서 설치한다.
-
-- [Download Visual Studio Code](https://code.visualstudio.com/download)
-
-```sh
-mv ~/Downloads/code_${VERSION}_amd64.deb /tmp
-cd /tmp
-sudo dpkg -i code_${VERSION}_amd64.deb
-```
-
 ## Docker
 
-### 자동 설치
-
-```sh
-sudo apt-get remove docker docker-engine docker.io
-sudo apt-get update
-sudo apt install docker.io
-```
-
-### 수동 설치
-
-```sh
-# Update the apt package index and install packages to allow apt to use a repository over HTTPS
-sudo apt-get update
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-
-# Add Docker’s official GPG key
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-# set up the repository
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# Install Docker Engine
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-```
-
-### 특정 버전 설치
-
-```sh
-# List the versions available in your repo
-apt-cache madison docker-ce
-
-# Install a specific version using the version string from the second column, for example, 5:20.10.16~3-0~ubuntu-jammy
-sudo apt-get install \
-  docker-ce=5:20.10.17~3-0~ubuntu-jammy \
-  docker-ce-cli=5:20.10.17~3-0~ubuntu-jammy \
-  containerd.io \
-  docker-compose-plugin
-```
-
-## Virtual Box
-
-VM Provider
-
-```sh
-sudo apt install -y virtualbox
-```
-
-## Vagrant
-
-VM provisioning tool
-
-- [다운로드](https://www.vagrantup.com/downloads)
-
-```sh
-cd /tmp
-wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update
-sudo apt install vagrant
-vagrant --version
-```
-
-## JetBrains Toolbox
-
-- [Download](https://www.jetbrains.com/toolbox-app/)
-
-```bash
-tar xf jetbrains-toolbox-1.21.9712.tar.gz
-cd jetbrains-toolbox-1.21.9712
-
-./jetbrains-toolbox
-```
-
-```sh
-# dlopen(): error loading libfuse.so.2
-# AppImages require FUSE to run. 
-# You might still be able to extract the contents of this AppImage 
-# if you run it with the --appimage-extract option. 
-# See https://github.com/AppImage/AppImageKit/wiki/FUSE 
-# for more information
-
-# 만약 위와 같은 에러가 발생한다면 아래 명령어를 실행한다.
-sudo apt-get install libfuse2
-```
-
-## Eclipse
-
-IntelliJ는 Toolbox로 쉽게 관리할 수 있지만, Eclipse는 번거로운 작업이 있다.
-
-- [버전 요구 사항](https://wiki.eclipse.org/Eclipse/Installation)
-  - [Eclipse 4.6 (Neon)](https://www.eclipse.org/downloads/packages/release/neon)부터 Java 8 이상 필수
-  - [Eclipse 4.16 (2020-06)](https://www.eclipse.org/downloads/packages/release/2020-06/r)
-  - [Eclipse 4.17 (2020-09)](https://www.eclipse.org/downloads/packages/release/2020-09/r)부터 Java 11 이상 필수
-
-```bash
-cp eclipse-jee-2020-06-R-linux-gtk-x86_64.tar.gz /tmp
-
-cd /tmp
-tar xvf eclipse-jee-2020-06-R-linux-gtk-x86_64.tar.gz -C $HOME
-
-cd ~/eclipse
-./eclipse
-```
-
-```bash
-vi /usr/share/applications/eclipse.desktop
-```
-
-```properties
-[Desktop Entry]
-Type=Application
-Name=Eclipse
-Comment=Eclipse Integrated Development Environment
-Icon=/home/markruler/eclipse/icon.xpm
-Exec=/home/markruler/eclipse/eclipse
-Terminal=false
-Categories=Development;IDE;Java;
-```
-
-```ini
-; vi ~/eclipse/eclipse.ini
-; 꼭 vmargs 앞에 vm이 와야 한다.
-
--vm
-/home/markruler/.sdkman/candidates/java/current/jre/bin/java
--vmargs
--Dosgi.requiredJavaVersion=1.8
--Dosgi.instance.area.default=@user.home/eclipse-workspace
-```
-
-![ubuntu-eclipse-to-dock](../images/ubuntu-eclipse-to-dock.png)
-
-'즐겨찾기에 추가'하면 dock에 추가된다.
+[Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) | Docker Docs
 
 ## 1Password
 
-### snap
-
-snap으로 설치하면 브라우저와 앱을 연결할 수 없다.
+- [Download 1Password for Linux](https://1password.com/downloads/linux/)
 
 ```sh
-# sudo snap install 1password
-```
-
-![1Password detected that it is a sandboxed application](../images/ubuntu22-sandboxed-1password.png)
-
-### deb
-
-```sh
-# https://1password.com/downloads/linux/
 sudo dpkg -i 1password-latest.deb
 ```
 
 ```sh
 # 에러 발생 시
 sudo apt --fix-broken install
-```
-
-![1Password on Ubuntu 22](../images/ubuntu22-1password.png)
-
-## NordVPN 설치
-
-- [매뉴얼](https://support.nordvpn.com/Connectivity/Linux/1325531132/Installing-and-using-NordVPN-on-Debian-Ubuntu-Elementary-OS-and-Linux-Mint.htm)
-
-```bash
-cd /tmp
-curl -LSf https://downloads.nordcdn.com/apps/linux/install.sh -o nordvpn.sh
-chmod +x nordvpn.sh
-./nordvpn.sh
-
-# ...
-# NordVPN for Linux successfully installed!
-# To get started, please re-login or execute `su - $USER` in the current shell, type 'nordvpn login' and enter your NordVPN account details. Then type 'nordvpn connect' and you’re all set! To allow other users to use the application run 'usermod -aG nordvpn otheruser'. If you need help using the app, use the command 'nordvpn --help'.
-```
-
-```bash
-sudo nordvpn help
-
-sudo nordvpn login
-# sudo nordvpn logout
-sudo nordvpn countries
-sudo nordvpn cities united_states
-
-sudo nordvpn c # connect
-sudo nordvpn c us # united_states
-sudo nordvpn d # disconnect
-
-sudo nordvpn set technology # Set connection technology (OpenVPN or NordLynx)
-sudo nordvpn set protocol udp # [tcp, udp]
-sudo nordvpn set killswitch on
-sudo nordvpn set cybersec on
-sudo nordvpn set notify on
-sudo nordvpn set obfuscate on
-sudo nordvpn set autoconnect on
-sudo nordvpn settings
-
-sudo nordvpn status
-sudo nordvpn rate # Rate your last connection quality (1-5)
 ```
 
 ## Dropbox
@@ -677,23 +474,122 @@ dropbox filestatus ~/Dropbox
 
 ```sh
 dropbox status
+```
+
+```sh
+dropbox start -i
+```
+
+```sh
 dropbox start
+# To link this computer to a Dropbox account, visit the following url: https://www.dropbox.com/cli_link_nonce?nonce=<hash>
+```
+
+```sh
+dropbox stop
+```
+
+```sh
 dropbox autostart y
-# dropbox stop
-dropbox filestatus ~/Dropbox
+# dropbox autostart n
+```
+
+```sh
+cd ~/Dropbox
+dropbox filestatus
+```
+
+```sh
 dropbox exclude list
 dropbox exclude add ebook
 ```
 
+## Flameshot (Screenshot Tool)
+
+- Configuration
+  - [x] Save image after copy
+  - 같은 Dropbox 경로에 저장하기 위해 macOS와 포맷 동일하게 설정.
+    - Filename Editor > Edit: `Screenshot %F at %I.%M.%S %p`
+    - General > Save Path: `~/Dropbox/Screenshots`
+- 단축키 설정
+  - Keyboard > Shortcuts > Custom Shortcuts
+  - Name: `Flameshot`
+  - Command: `/bin/sh -c '/usr/bin/flameshot gui'`
+  - Shortcut: `Shift` + `Super` + `S`
+
 ## Cursor AI
 
-- [simple](https://gist.github.com/evgenyneu/5c5c37ca68886bf1bea38026f60603b6)
-- [script](https://gist.github.com/Kinyugo/9845e18998744ff54b8f0cde3bb37182)
+```sh
+curl https://gist.githubusercontent.com/markruler/2820bd05d613c61dac906814a4e282b7/raw/install_cursor.sh | sh
+# source ~/.bashrc
+# cursor
+```
+
+## NordVPN 설치
+
+- [매뉴얼](https://support.nordvpn.com/Connectivity/Linux/1325531132/Installing-and-using-NordVPN-on-Debian-Ubuntu-Elementary-OS-and-Linux-Mint.htm)
 
 ```sh
-curl https://gist.githubusercontent.com/Kinyugo/9845e18998744ff54b8f0cde3bb37182/raw/a9425582958c14f80acea08e51c49b1bf63840c7/install_cursor.sh | sh
+curl https://downloads.nordcdn.com/apps/linux/install.sh | sh
+# ...
+# NordVPN for Linux successfully installed!
+# To get started, please re-login or execute `su - $USER` in the current shell,
+# type 'nordvpn login' and enter your NordVPN account details.
+# Then type 'nordvpn connect' and you’re all set!
+# To allow other users to use the application run 'usermod -aG nordvpn otheruser'.
+# If you need help using the app, use the command 'nordvpn --help'.
 ```
 
 ```sh
-cursor
+sudo nordvpn help
+
+sudo nordvpn login
+# sudo nordvpn logout
+sudo nordvpn countries
+sudo nordvpn cities united_states
+
+sudo nordvpn c # connect
+sudo nordvpn c us # united_states
+sudo nordvpn d # disconnect
+
+sudo nordvpn set technology # Set connection technology (OpenVPN or NordLynx)
+sudo nordvpn set protocol udp # [tcp, udp]
+sudo nordvpn set killswitch on
+sudo nordvpn set cybersec on
+sudo nordvpn set notify on
+sudo nordvpn set obfuscate on
+sudo nordvpn set autoconnect on
+sudo nordvpn settings
+
+sudo nordvpn status
+sudo nordvpn rate # Rate your last connection quality (1-5)
+```
+
+## Visual Studio Code
+
+```sh
+# sudo snap install code --classic
+# sudo snap remove code
+```
+
+snap으로 설치할 경우 한글이 입력되지 않는다.
+`.deb` 패키지를 다운로드 받아서 설치한다.
+
+- [Download Visual Studio Code](https://code.visualstudio.com/download)
+
+```sh
+mv ~/Downloads/code_${VERSION}_amd64.deb /tmp
+cd /tmp
+sudo dpkg -i code_${VERSION}_amd64.deb
+```
+
+## JetBrains Toolbox
+
+- [Download](https://www.jetbrains.com/toolbox-app/)
+
+```sh
+tar xf jetbrains-toolbox-1.21.9712.tar.gz
+cd jetbrains-toolbox-1.21.9712
+
+./jetbrains-toolbox
 ```
