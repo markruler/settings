@@ -1,1 +1,109 @@
+# playground
+playground/
+tool/
+
+# work
+work/
+micro-frontend/
+
+# shell
+.bash_history
+.zsh_history
+.zsh_sessions/
+.zcompdump*
+.zprofile*
+.oh-my-zsh/
+
+#.zshrc
+#.bashrc
+.bash_profile
+
+.lesshst
+
+.ssh/*
+!.ssh/config
+
+*.swp
+
+# macOS
+Applications/
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+Users/
+.Trash/
+.CFUserTextEncoding
 .DS_Store
+.swiftpm/
+
+.config/*
+!.config/fish/
+
+.cache/
+.local/
+
+# Linux
+
+# Windows
+
+# Visual Studio Code
+.vscode/
+.dbclient/
+.cursor/
+.redhat/
+
+# Jetbrains
+DataGripProjects/
+IdeaSnapshots/
+jcef*
+
+# Vim
+.vim/
+.viminfo
+.fzf.zsh
+.fzf/
+.fzf.bash
+
+# Java
+*.hprof
+.sdkman/
+.m2/
+.gradle/
+
+# Android
+.android/
+
+# JavaScript
+.yarn/
+.node_repl_history
+.pnpmrc
+.npm/
+.nvm/
+
+# Go
+go/
+.dlv/
+
+# etc.
+Dropbox
+.dropbox/
+
+.docker/
+.aws/
+
+.redis-insight/
+
+.sonarlint/
+
+*.log
+logs/
+*.xlsx
+
+.wakatime/
+.wakatime.cfg
+

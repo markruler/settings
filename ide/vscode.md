@@ -46,4 +46,3 @@ mv ~/Downloads/Visual\ Studio\ Code.app /Applications/
 - `>Shell Command: Install 'code' command in PATH`
 - Copilot 로그인
 - Extension 빌드
-
