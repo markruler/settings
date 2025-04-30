@@ -8,23 +8,28 @@ work/
 micro-frontend/
 
 # shell
+.sudo_as_admin_successful
+#.bashrc
+.bash_profile
+.bash_logout
 .bash_history
+.profile
+
+#.zshrc
+.oh-my-zsh/
 .zsh_history
 .zsh_sessions/
 .zcompdump*
 .zprofile*
-.oh-my-zsh/
-
-#.zshrc
-#.bashrc
-.bash_profile
-
-.lesshst
+.shell.pre-oh-my-zsh
+.zshrc.pre-oh-my-zsh
 
 .ssh/*
 !.ssh/config
 
+.lesshst
 *.swp
+.wget-hsts
 
 # macOS
 Applications/
@@ -49,6 +54,8 @@ Users/
 .local/
 
 # Linux
+.pki/
+.gnupg/
 
 # Windows
 
@@ -75,6 +82,8 @@ jcef*
 .sdkman/
 .m2/
 .gradle/
+.java/
+.visualvm/
 
 # Android
 .android/
@@ -93,6 +102,7 @@ go/
 # etc.
 Dropbox
 .dropbox/
+.dropbox-dist/
 
 .docker/
 .aws/
@@ -107,4 +117,11 @@ logs/
 
 .wakatime/
 .wakatime.cfg
+
+.dotnet/
+
+.mozilla/
+
+# snapcraft
+snap/
 
