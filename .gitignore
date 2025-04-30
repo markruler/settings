@@ -30,6 +30,7 @@ micro-frontend/
 .lesshst
 *.swp
 .wget-hsts
+nohup.out
 
 # macOS
 Applications/
@@ -99,29 +100,42 @@ jcef*
 go/
 .dlv/
 
-# etc.
+# Dropbox
 Dropbox
 .dropbox/
 .dropbox-dist/
 
+# Docker
 .docker/
+
+# AWS
 .aws/
 
-.redis-insight/
+# Oracle
+.oracle_jre_usage/
 
+# Redis
+.redis-insight/
+.rediscli_history
+
+# SonarQube
 .sonarlint/
 
+# Text
 *.log
 logs/
 *.xlsx
 
+# Wakatime
 .wakatime/
 .wakatime.cfg
 
+# CS Dotnet
 .dotnet/
 
+# Browser
 .mozilla/
 
-# snapcraft
+# Snapcraft
 snap/
 
