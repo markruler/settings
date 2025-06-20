@@ -96,6 +96,9 @@ jcef*
 .npm/
 .nvm/
 
+# Python
+.python_history
+
 # Go
 go/
 .dlv/
