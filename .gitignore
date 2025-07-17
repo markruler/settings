@@ -85,6 +85,7 @@ jcef*
 .gradle/
 .java/
 .visualvm/
+.sts4/
 
 # Android
 .android/
@@ -124,9 +125,11 @@ Dropbox
 # SonarQube
 .sonarlint/
 
-# Text
+# data
+*.data
 *.log
 logs/
+*.csv
 *.xlsx
 
 # Wakatime
