@@ -145,3 +145,10 @@ logs/
 # Snapcraft
 snap/
 
+# Video
+dwhelper/
+
+# Git
+# GitKraken (GitLens)
+.gk/
+

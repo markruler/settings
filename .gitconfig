@@ -46,3 +46,5 @@
   oops = commit --amend --no-edit
   # Edit last commit message
   reword = commit --amend
+[init]
+	defaultBranch = main

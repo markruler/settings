@@ -11,3 +11,7 @@
 *.png binary
 *.jpg binary
 *.jpeg binary
+*.jar binary
+*.war binary
+*.zip binary
+
