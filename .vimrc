@@ -1,35 +1,39 @@
-syntax on                                                                       
-set showcmd
-set statusline+=%F::%l,%c
-set showmatch
-set ignorecase
-set smartcase
-set incsearch
-set autowrite
-set ruler
-set autoindent
-set cindent
+syntax on
+set encoding=utf-8
+set fileencodings=utf-8
 set shiftwidth=2
 set tabstop=2
+set autoindent
+set paste
 set expandtab
-set laststatus=2
+
+set autowrite
 set backspace=indent,eol,start
-set showmode
-set hls
-set colorcolumn=80
+set cindent
 set ff=unix
-set fileencodings=utf8
+set colorcolumn=80
+set hls
+set incsearch
+set ignorecase
+set laststatus=2
+set showcmd
+set showmatch
+set showmode
+set smartcase
+set statusline+=%F::%l,%c
+set ruler
 set viminfo='50,<1000
 "set history=1000
+
 au FileType make setlocal noexpandtab
 
 highlight TailingWhitespace ctermbg=red guibg=red
 
-set cul
 set background=dark
+set cul
 set nowrapscan
-set visualbell
 set tenc=utf-8
+set visualbell
 
 call plug#begin('~/.vim/plugged')
 " The default plugin directory will be as follows:

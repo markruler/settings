@@ -23,6 +23,8 @@ micro-frontend/
 .zprofile*
 .shell.pre-oh-my-zsh
 .zshrc.pre-oh-my-zsh
+# workplace-specific
+.zshrc.work
 
 .ssh/*
 !.ssh/config
@@ -47,6 +49,8 @@ Users/
 .CFUserTextEncoding
 .DS_Store
 .swiftpm/
+# CUPS: modular printing system for Unix-like computer operating systems
+.cups/
 
 .config/*
 !.config/fish/
@@ -63,7 +67,6 @@ Users/
 # Visual Studio Code
 .vscode/
 .dbclient/
-.cursor/
 .redhat/
 
 # Jetbrains
@@ -103,6 +106,9 @@ jcef*
 # Go
 go/
 .dlv/
+
+# XML
+.lemminx/
 
 # Dropbox
 Dropbox
@@ -152,3 +158,15 @@ dwhelper/
 # GitKraken (GitLens)
 .gk/
 
+# AI agent
+.antigravity/
+.claude/
+!.claude/CLAUDE.md
+.claude.json
+.claude.json.backup
+.codex/
+.cursor/
+.gemini/
+
+# test
+.testcontainers.properties
