@@ -160,7 +160,8 @@ dwhelper/
 
 # AI agent
 .antigravity/
-.claude/
+.claude.json.backup.*
+.claude/*
 !.claude/CLAUDE.md
 .claude.json
 .claude.json.backup
