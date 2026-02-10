@@ -1,0 +1,13 @@
+# reload: command + shift + ,
+# https://ghostty.zerebos.com/
+theme=Catppuccin Mocha
+
+font-size=16
+font-thicken=true
+font-thicken-strength=1
+adjust-cell-height=1
+
+background-opacity=0.90
+background-blur=16
+background=#000000
+

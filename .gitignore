@@ -54,6 +54,7 @@ Users/
 
 .config/*
 !.config/fish/
+!.config/ghostty/
 
 .cache/
 .local/
