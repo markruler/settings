@@ -11,3 +11,6 @@ background-opacity=0.90
 background-blur=16
 background=#000000
 
+clipboard-read=allow
+clipboard-write=allow
+
