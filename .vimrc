@@ -1,53 +1,62 @@
-syntax on
+" =============================================================================
+" General
+" =============================================================================
 set encoding=utf-8
 set fileencodings=utf-8
+set termencoding=utf-8
+set fileformat=unix
+set backspace=indent,eol,start
+set autowrite
+set viminfo='50,<1000
+
+" =============================================================================
+" Indentation
+" =============================================================================
 set shiftwidth=2
 set tabstop=2
-set autoindent
-set paste
 set expandtab
+set autoindent
+set pastetoggle=<F2>
 
-set autowrite
-set backspace=indent,eol,start
-set cindent
-set ff=unix
-set colorcolumn=80
-set hls
+autocmd FileType make setlocal noexpandtab
+
+" =============================================================================
+" Search
+" =============================================================================
+set hlsearch
 set incsearch
 set ignorecase
-set laststatus=2
+set smartcase
+set nowrapscan
+
+" =============================================================================
+" UI/Display
+" =============================================================================
+syntax on
+set background=dark
+set cursorline
+set colorcolumn=80
 set showcmd
 set showmatch
 set showmode
-set smartcase
+set laststatus=2
 set statusline+=%F::%l,%c
-set ruler
-set viminfo='50,<1000
-"set history=1000
-
-au FileType make setlocal noexpandtab
-
-highlight TailingWhitespace ctermbg=red guibg=red
-
-set background=dark
-set cul
-set nowrapscan
-set tenc=utf-8
 set visualbell
 
+" Trailing whitespace highlight
+highlight TrailingWhitespace ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
+
+" =============================================================================
+" Plugins
+" =============================================================================
 call plug#begin('~/.vim/plugged')
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter' "GitGutterToggle
+" GitGutterToggle
+Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 
