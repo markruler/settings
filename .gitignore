@@ -164,9 +164,11 @@ dwhelper/
 .claude.json.backup.*
 .claude/*
 !.claude/CLAUDE.md
+!.claude/settings.json
 .claude.json
 .claude.json.backup
 .codex/
+.copilot/
 .cursor/
 .gemini/
 
