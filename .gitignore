@@ -67,6 +67,7 @@ Users/
 
 # Visual Studio Code
 .vscode/
+.vscode-shared/
 .dbclient/
 .redhat/
 
