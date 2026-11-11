@@ -111,6 +111,9 @@ export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# Tool version manager
+eval "$(mise activate zsh)"
+
 # Load work-related configurations if exists
 [ -f ~/.zshrc.work ] && source ~/.zshrc.work
 
@@ -135,3 +138,12 @@ compinit
 
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# Android SDK
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+# 연결된 Android 기기 확인: adb devices -l
+# 사용 가능한 Android AVD 확인: emulator -list-avds
+
+# Unity CLI
+. "$HOME/.unity/env"

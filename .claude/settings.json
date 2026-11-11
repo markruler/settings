@@ -1,21 +1,23 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits",
-    "disableBypassPermissionsMode": "disable",
-    "allow": [
-      "Read(*)",
-      "WebFetch(domain:*)",
-      "Bash(*)"
-    ],
     "deny": [
       "Read(credentials)",
       "Read(*.pem)",
       "Read(*.pub)",
-      "Read(*.key)",
-      "Bash(git push *)"
+      "Read(*.key)"
     ],
-    "ask": [
-      "Bash(rm *)"
-    ]
+    "defaultMode": "bypassPermissions"
+  },
+  "skipWorkflowUsageWarning": true,
+  "skipDangerousModePermissionPrompt": true,
+  "tui": "fullscreen",
+  "theme": "dark",
+  "language": "korean",
+  "enabledPlugins": {
+    "aws-core@claude-plugins-official": true
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   }
 }

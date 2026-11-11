@@ -52,6 +52,9 @@ Users/
 # CUPS: modular printing system for Unix-like computer operating systems
 .cups/
 
+# homebrew
+.homebrew/
+
 .config/*
 !.config/fish/
 !.config/ghostty/
@@ -72,7 +75,9 @@ Users/
 .redhat/
 
 # Jetbrains
+/.junie/
 DataGripProjects/
+PyCharmMiscProject/
 IdeaSnapshots/
 jcef*
 
@@ -91,9 +96,14 @@ jcef*
 .java/
 .visualvm/
 .sts4/
+/javasharedresources/
 
 # Android
 .android/
+/.emulator_console_auth_token
+
+# Unity
+/.unity/
 
 # JavaScript
 .yarn/
@@ -131,6 +141,7 @@ Dropbox
 .rediscli_history
 
 # SonarQube
+/.sonar/
 .sonarlint/
 
 # data
@@ -161,6 +172,7 @@ dwhelper/
 .gk/
 
 # AI agent
+/.agentcore/
 .antigravity/
 .claude.json.backup.*
 .claude/*
@@ -168,10 +180,13 @@ dwhelper/
 !.claude/settings.json
 .claude.json
 .claude.json.backup
-.codex/
 .copilot/
 .cursor/
 .gemini/
+
+# Codex
+/.codex/*
+!/.codex/AGENTS.md
 
 # test
 .testcontainers.properties

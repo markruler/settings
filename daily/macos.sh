@@ -18,3 +18,9 @@ brew upgrade
 
 echo -e "\n🚩 Homebrew cleanup"
 brew cleanup
+
+# Javsscript
+npm update -g --allow-scripts=pnpm,@github/keytar,node-pty
+
+mise upgrade --yes
+

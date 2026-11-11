@@ -11,7 +11,7 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{properties}]
+[*.{properties,csv,tsv,html}]
 trim_trailing_whitespace = false
 
 # Tab indentation (no size specified)

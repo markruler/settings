@@ -10,3 +10,7 @@ TMOUT=300
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
+
+# Added by Antigravity CLI installer
+export PATH="$HOME/.local/bin:$PATH"
