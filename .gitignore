@@ -190,3 +190,4 @@ dwhelper/
 
 # test
 .testcontainers.properties
+/jenkins-backups/
